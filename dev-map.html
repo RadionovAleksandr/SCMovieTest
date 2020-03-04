@@ -1,0 +1,63 @@
+//основной экран
+<header/>
+<router>
+    <main>
+        <search/>
+        <list-movies>
+            <movie-card-a/>
+            <movie-card-b/>
+        </list-movies>
+    </main>
+</router>
+
+//экран карточки фильма
+<router>
+    <img-movie/>
+    <button-featured-movie>
+        <text-movie/>
+        <statistics-movie/>
+        <related-movies-list>
+            <related-movies-a/>
+            <related-movies-b/>
+        </related-movies-list>
+</router>
+
+//экран избранные фильмы
+<router>
+    <list-movies>
+        <movie-card-a>
+            <button-remove/>
+            <movie-card-a/>
+            <movie-card-b>
+                <button-remove/>
+                <movie-card-b/>
+    </list-movies>
+</router>
+
+
+<pre>
+функционал
+экран "Основной"
+    -поиск по фильмам
+    -просмотр расширенной информации
+
+
+экран "Карточки фильма":
+    -добавить в избранное
+    -добавить в storage
+
+
+экран "Избранные фильм"
+    -удалить из списка
+    -удалить из storage
+</pre>
+
+<pre>
+методы сервиса:
+    GET/movie/now_playing
+    GET/movie/{movie_id}
+    GET/movie/{movie_id}/images
+    GET/movie/{movie_id}/credits
+    GET/movie/{movie_id}/lists  or GET/movie/{movie_id}/recommendations or GET/movie/{movie_id}/similar
+    GET/movie/{movie_id}/release_dates
+</pre>
