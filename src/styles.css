@@ -29,13 +29,26 @@ html {
     background-color: grey;
 }
 
-.movie-list {
+.movie-list,
+.bookmarks-list {
     display: flex;
 }
 
-.movie-card {
+.info-movies {
+    display: flex;
+}
+
+.movie-card,
+.bookmarks-card {
     width: 350px;
     height: 400px;
+    border: 2px solid hotpink;
+    margin: 20px 30px;
+}
+
+.movie-card--big {
+    width: 1200px;
+    height: 500px;
     border: 2px solid hotpink;
     margin: 20px 30px;
 }
