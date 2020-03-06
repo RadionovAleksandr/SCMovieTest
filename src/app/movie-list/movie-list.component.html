@@ -6,26 +6,9 @@
     </div>
     <div class="movie-list-box">
         <ul class="movie-list">
-
-            <li class="movie-card" [routerLink]="['/info']">
-                <img class="card-poster" />
-                <div class="text ">Lorem, ipsum.</div>
-
-            </li>
-            <li class="movie-card">
-                <img class="card-poster" />
-                <div class="text ">Lorem, ipsum.</div>
-
-            </li>
-            <li class="movie-card">
-                <img class="card-poster" />
-                <div class="text ">Lorem, ipsum.</div>
-
-            </li>
-            <li class="movie-card">
-                <img class="card-poster" />
-                <div class="text">Lorem, ipsum.</div>
-
+            <li class="movie-card" [routerLink]="['/info']" *ngFor="let movie of movies">
+                <img class="card-poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}">
+                <div class=" text ">{{movie.title}}</div>
             </li>
         </ul>
     </div>

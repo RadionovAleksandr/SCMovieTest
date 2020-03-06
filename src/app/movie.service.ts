@@ -26,8 +26,8 @@ export class MovieService {
 
     constructor(private http: HttpClient) {}
 
-    getMovies(): Observable<Movie[]> {
-        return this.http.get<Movie[]>('https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb')
+    getMovies(): Observable<void[]> {
+        return this.http.get<void[]>('https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb')
     }
 }
 

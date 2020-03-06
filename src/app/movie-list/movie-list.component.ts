@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MovieService, Movie } from '../movie.service';
 import { Router } from '@angular/router'
 
 @Component({
@@ -8,9 +9,18 @@ import { Router } from '@angular/router'
 })
 export class MovieListComponent implements OnInit {
 
-    constructor(private router: Router) { }
+    movies: void;
+    constructor(
+        private router: Router,
+        private movieService: MovieService) { }
 
-    ngOnInit(): void {
+    ngOnInit() {
+        console.log(' movie List ')
+        this.movieService.getMovies()
+        .subscribe(movies => {
+            console.log(movies)
+            this.movies = movies.results
+        });
     }
     goToPostsPage() {
         this.router.navigate(['/'])
