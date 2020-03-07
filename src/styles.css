@@ -43,13 +43,11 @@ html {
 .bookmarks-card {
     width: 300px;
     height: auto;
-    /* border: 2px solid hotpink; */
     margin: 20px 30px;
 }
 
 .movie-card--big {
     width: auto;
     height: auto;
-    /* border: 2px solid hotpink; */
     margin: 20px 30px;
 }

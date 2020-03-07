@@ -6,10 +6,12 @@
     </div>
     <div class="movie-list-box">
         <ul class="movie-list">
-            <li class="movie-card" [routerLink]="['/info']" *ngFor="let movie of movies">
-                <img class="card-poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}">
-                <div class=" text ">{{movie.title}}</div>
-            </li>
+            <div *ngFor="let movie of movies">
+                <li class="movie-card" [routerLink]="['/info', movie.id]" (click)="openCard(movie.id)">
+                    <img class="card-poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" id="{{movie.id}}">
+                    <div class=" text ">{{movie.title}}</div>
+                </li>
+            </div>
         </ul>
     </div>
 </section>

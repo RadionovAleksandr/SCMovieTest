@@ -10,6 +10,7 @@ const routes: Routes = [
     // { path: '', component: AppComponent },
     { path: 'bookmarks', component: MovieBookmarksComponent },
     { path: 'info', component: MovieInfoComponent },
+    { path: 'info/:id', component: MovieInfoComponent },
     { path: '', component: MovieListComponent }
 ]
 
