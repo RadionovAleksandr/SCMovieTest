@@ -1,19 +1,23 @@
 <p>movie-info works!</p>
 
-<div class="text-movie"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea id reiciendis unde libero similique saepe consectetur, dolore necessitatibus asperiores officiis.</div>
 <div class="statistics-movie">
-    Lorem, ipsum.
+
 </div>
 
 <section class="info-movies">
     <div class="card-movie movie-card--big">
-        <img class="r" src="" alt="">
+        <img class="r" src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" alt="Постер">
     </div>
 
     <div class="info-movies-wrap">
-        <div class="title">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Odit unde optio quibusdam alias adipisci maxime laborum voluptatum repellat rem corrupti..</div>
+        <b class="title-movie">{{movie. title}}</b>
+        <div class="text-movie">
+            {{movie.overview}}
+        </div>
+
         <button class="btn">add bookmarks</button>
-        <div class="finans">finans</div>
-        <div class="userCoast">userCoast</div>
+        <div class="budget">Budget {{movie.budget}}</div>
+        <div class="vote-average">Viewers rating{{movie.vote_average}}</div>
+        <div class="popularity">Views{{movie.popularity}}</div>
     </div>
 </section>
