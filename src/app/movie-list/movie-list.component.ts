@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService, Movie } from '../movie.service';
-import { Router } from '@angular/router'
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-movie-list',
@@ -9,6 +9,7 @@ import { Router } from '@angular/router'
 })
 export class MovieListComponent implements OnInit {
 
+    search: string = ''
     movies: Movie[];
     constructor(
         private router: Router,
@@ -21,7 +22,6 @@ export class MovieListComponent implements OnInit {
             console.log(movies)
             this.movies = movies.results
         });
-
         // console.log('this.movies  ', this.movies )
         // console.log('this.movieService.movies  ', this.movieService.movies)
     };

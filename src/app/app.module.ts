@@ -8,13 +8,15 @@ import { AppComponent } from './app.component';
 import { MovieBookmarksComponent } from './movie-bookmarks/movie-bookmarks.component';
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
+import { SearchPipe } from './pipes/search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     MovieBookmarksComponent,
     MovieInfoComponent,
-    MovieListComponent
+    MovieListComponent,
+    SearchPipe
   ],
   imports: [
     BrowserModule,
