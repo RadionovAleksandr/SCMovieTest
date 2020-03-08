@@ -16,7 +16,7 @@ export class MovieBookmarksComponent implements OnInit {
     constructor(
         private router: Router,
         private movieBookmarkService: MovieBookmarksService
-        ) { }
+    ) { }
 
     ngOnInit(): void {
         this.movies = this.movieBookmarkService.movieBookmarks

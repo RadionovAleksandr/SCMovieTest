@@ -18,18 +18,16 @@ export class MovieListComponent implements OnInit {
     ngOnInit() {
         console.log(' movie List ');
         this.movieService.getMovies()
-        .subscribe(movies => {
-            console.log(movies)
-            this.movies = movies.results
-        });
-        // console.log('this.movies  ', this.movies )
-        // console.log('this.movieService.movies  ', this.movieService.movies)
+            .subscribe(movies => {
+                console.log(movies)
+                this.movies = movies.results
+            });
     };
 
-    openCard(id:number) {
+    openCard(id: number) {
         console.log(' id ' + id);
     };
-    
+
     goToPostsPage() {
         this.router.navigate(['/'])
     };

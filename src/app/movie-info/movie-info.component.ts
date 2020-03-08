@@ -24,18 +24,17 @@ export class MovieInfoComponent implements OnInit {
         private route: ActivatedRoute,
         private movieInfoService: MovieInfoService,
         private movieBookmarksService: MovieBookmarksService
-        ) { }
+    ) { }
 
     ngOnInit(): void {
         this.route.params
             .subscribe((params: Params) => {
                 this.movieInfoService.getMoviesDetails(params.id)
-                .subscribe(movie => {
-                    this.movie = movie
-                });
+                    .subscribe(movie => {
+                        this.movie = movie
+                    });
             })
     }
-
 
     addBookmarks(movie: Movie) {
         this.movieBookmarksService.addBookmarks(movie);

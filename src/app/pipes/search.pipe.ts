@@ -6,8 +6,8 @@ import { Movie } from '../movie.service';
 })
 export class SearchPipe implements PipeTransform {
 
-  transform(movies: Movie[], search: string = ''):Movie[] {
-    if(!search.trim()) {
+  transform(movies: Movie[], search: string = ''): Movie[] {
+    if (!search.trim()) {
       return movies
     }
     return movies.filter((movie) => {

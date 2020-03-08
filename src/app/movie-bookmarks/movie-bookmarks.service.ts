@@ -23,14 +23,5 @@ export class MovieBookmarksService {
                 i--;
             }
         }
-        
-        console.log(' movie BM ', movie)
-        // return this.movieBookmarks.filter((item) => {
-        //     item.id !== movie.id;
-        //     console.log(item.id !== movie.id)
-        //     console.log('delite', this.movieBookmarks)
-        // })
-        // console.log('movie.id', movie.id);
-        // console.log('item.id', item.id)
     }
 }
