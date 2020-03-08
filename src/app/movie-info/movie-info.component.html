@@ -15,7 +15,7 @@
             {{movie.overview}}
         </div>
 
-        <button class="btn">add bookmarks</button>
+        <button class="btn" (click)="addBookmarks(movie)">add bookmarks</button>
         <div class="budget">Budget {{movie.budget}}</div>
         <div class="vote-average">Viewers rating{{movie.vote_average}}</div>
         <div class="popularity">Views{{movie.popularity}}</div>

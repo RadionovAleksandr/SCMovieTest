@@ -11,22 +11,29 @@ html {
 
 .header-title {
     padding: 20px 30px;
+    display: flex;
 }
 
 .movie-top-wrap {
     display: flex;
 }
 
-.movie-searc {
+.movie-search {
     width: 80%;
-    margin: 0 30px;
+    margin: 0 auto;
     padding: 20px 30px;
-    background-color: blueviolet;
+    background-color: rgb(201, 165, 235);
 }
 
 .btn {
+    font-size: 16px;
     padding: 20px;
     background-color: grey;
+}
+
+.btn--bookmarks {
+    max-width: 200px;
+    margin-left: auto;
 }
 
 .movie-list,

@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 
 import { MovieInfoService } from './movie-info.service';
+
 import { observable } from 'rxjs';
 import { Movie } from '../movie.service';
 import { Route } from '@angular/compiler/src/core';
 import { ActivatedRoute, Params } from '@angular/router';
+import { MovieBookmarksService } from '../movie-bookmarks/movie-bookmarks.service'
 
 @Component({
     selector: 'app-movie-info',
@@ -15,18 +17,27 @@ export class MovieInfoComponent implements OnInit {
 
     // id: number;
     movie: void;
-    constructor(private route: ActivatedRoute,
-        private movieInfoService: MovieInfoService) { }
+    bookmarks: Movie[] = [];
+    // movieBookmarkcs: MovieBookmarksService
+
+    constructor(
+        private route: ActivatedRoute,
+        private movieInfoService: MovieInfoService,
+        private movieBookmarksService: MovieBookmarksService
+        ) { }
 
     ngOnInit(): void {
         this.route.params
             .subscribe((params: Params) => {
-                console.log('params ', params);
                 this.movieInfoService.getMoviesDetails(params.id)
                 .subscribe(movie => {
-                    console.log(movie)
                     this.movie = movie
                 });
             })
+    }
+
+
+    addBookmarks(movie: Movie) {
+        this.movieBookmarksService.addBookmarks(movie);
     }
 }

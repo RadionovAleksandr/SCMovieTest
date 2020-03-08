@@ -1,19 +1,17 @@
 <section>
     <p>movie-bookmarks works!</p>
-    <div class="text-movie"> Lorem ipsum dolor sit amet consectetur adipisicing elit. Ea id reiciendis unde libero similique saepe consectetur, dolore necessitatibus asperiores officiis.</div>
+
+    <div class="text-movie">Lorem, ipsum dolor.</div>
     <div class="bookmarks-list-box">
-        <ul class="bookmarks-list">
+        <ul class="bookmarks-list" *ngFor="let movie of movies">
             <li class="bookmarks-card">
-                <img src="" alt="">
-                <div class="title">Lorem, ipsum.</div>
-                <button class="btn btn--remove"></button>
+                <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" alt="Постер">
+                <div class="title">{{movie.title}}</div>
+                <button class="btn btn--remove" (click)="delite(movie)">delite</button>
             </li>
 
-            <li class="bookmarks-card">
-                <img src="" alt="">
-                <div class="title">Lorem, ipsum.</div>
-                <button class="btn btn--remove"></button>
-            </li>
+
         </ul>
     </div>
+
 </section>
