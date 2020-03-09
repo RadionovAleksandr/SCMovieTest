@@ -19,16 +19,15 @@ export class MovieListComponent implements OnInit {
         console.log(' movie List ');
         this.movieService.getMovies()
             .subscribe(movies => {
-                console.log(movies)
                 this.movies = movies.results
             });
     };
 
-    openCard(id: number) {
-        console.log(' id ' + id);
-    };
+    // openCard(id: number) {
+    //     console.log(' id ' + id);
+    // };
 
-    goToPostsPage() {
-        this.router.navigate(['/'])
-    };
+    // goToPostsPage() {
+    //     this.router.navigate(['/'])
+    // };
 }

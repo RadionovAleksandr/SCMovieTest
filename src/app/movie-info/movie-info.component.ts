@@ -16,7 +16,8 @@ import { MovieBookmarksService } from '../movie-bookmarks/movie-bookmarks.servic
 export class MovieInfoComponent implements OnInit {
 
     // id: number;
-    movie: void;
+    movie;//: void;
+
     bookmarks: Movie[] = [];
     // movieBookmarkcs: MovieBookmarksService
 

@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { Movie } from '../movie.service';
+import { Observable } from 'rxjs';
 
 @Injectable({
     providedIn: 'root'
@@ -8,15 +9,32 @@ import { Movie } from '../movie.service';
 
 export class MovieBookmarksService {
 
-    movieBookmarks: Movie[] = [];
+    movieBookmarks: Movie[] = [];  //new Map
+    movieBookmarksId: number[] = [];
 
     constructor(private http: HttpClient) { }
+
+    // this method save object movie
+    // addBookmarks(movieBookmarks) {
+    //     if(this.movieBookmarks.includes(movieBookmarks) === false) {
+    //         this.movieBookmarks.push(movieBookmarks);
+    //     }
+    //     console.log('service BM this.movieBookmarks ', this.movieBookmarks)
+    // }
+
+    // this method save propherty id object movie
     addBookmarks(movieBookmarks) {
-        this.movieBookmarks.push(movieBookmarks);
-        console.log('service BM this.movieBookmarks ', this.movieBookmarks)
+        if (this.movieBookmarksId.includes(movieBookmarks.id) === false) {
+            this.movieBookmarksId.push(movieBookmarks.id);
+        }
+        console.log('service BM this.movieBookmarks ', this.movieBookmarksId)
     }
 
-    delite(movie) {
+    getBookmarks(id: number): Observable<Movie> {
+        return this.http.get<Movie>('https://api.themoviedb.org/3/movie/' + id + '?api_key=07223f1ae4f3155a8e7eadc55a5431eb')
+    }
+    
+    delBookmarks(movie) {
         for (var i = 0; i < this.movieBookmarks.length; i++) {
             if (this.movieBookmarks[i].id === movie.id) {
                 this.movieBookmarks.splice(i, 1);
@@ -25,3 +43,7 @@ export class MovieBookmarksService {
         }
     }
 }
+
+let b = { key: 4 }
+let a = [b, 1, 2, 3]
+a.includes(b)

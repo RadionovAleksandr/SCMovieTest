@@ -11,7 +11,8 @@ import { MovieBookmarksService } from './movie-bookmarks.service';
 
 export class MovieBookmarksComponent implements OnInit {
 
-    movies: Movie[];
+    movies: Movie[] = [];
+    arrid: number[]= [];
 
     constructor(
         private router: Router,
@@ -19,13 +20,24 @@ export class MovieBookmarksComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.movies = this.movieBookmarkService.movieBookmarks
+        // this.movies = this.movieBookmarkService.movieBookmarks;
+        this.arrid = this.movieBookmarkService.movieBookmarksId;
+        console.log(this.arrid);    
+        this.getBookmarks(this.arrid);
     }
 
-    delite(movie) {
-        this.movieBookmarkService.delite(movie);
+    delBookmarks(movie) {
+        this.movieBookmarkService.delBookmarks(movie);
     }
 
+    getBookmarks(arrid) {
+        arrid.forEach(id => {
+            this.movieBookmarkService.getBookmarks(id)
+                .subscribe(movie => {
+                    this.movies.push(movie);
+                });
+            })
+        }
 
     // goToPostsPage() {
     //     this.router.navigate(['/bookmarks'])

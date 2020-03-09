@@ -6,7 +6,7 @@
     <div class="movie-list-box">
         <ul class="movie-list">
             <div *ngFor="let movie of movies | search:search">
-                <li class="movie-card" [routerLink]="['/info', movie.id]" (click)="openCard(movie.id)">
+                <li class="movie-card" [routerLink]="['/info', movie.id]">
                     <img class="card-poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" id="{{movie.id}}">
                     <div class=" text ">{{movie.title}}</div>
                 </li>
