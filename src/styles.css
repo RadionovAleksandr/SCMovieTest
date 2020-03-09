@@ -45,6 +45,7 @@ html {
 
 .info-movies {
     display: flex;
+    flex-wrap: wrap;
 }
 
 .movie-card,
@@ -55,7 +56,18 @@ html {
 }
 
 .movie-card--big {
-    width: auto;
+    width: 40%;
     height: auto;
     margin: 20px 30px;
+}
+
+.info-movies-wrap {
+    width: 40%;
+}
+
+.similar-box {
+    margin: auto;
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
 }

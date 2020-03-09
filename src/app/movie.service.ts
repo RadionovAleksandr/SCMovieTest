@@ -20,6 +20,7 @@ export interface Movie {
     genres: [string],
 }
 
+
 export interface ResponceMovieNow {
     results: Movie[]
 }
@@ -37,6 +38,7 @@ export interface ResponceGenre {
 
 export class MovieService implements OnInit {
     movies: Movie[];
+    objGenres = {};
 
     constructor(private http: HttpClient) { }
 

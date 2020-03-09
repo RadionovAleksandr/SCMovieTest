@@ -12,7 +12,7 @@ export class MovieListComponent implements OnInit {
     search: string = ''
     movies: Movie[];
     genres: Genre[];
-    objGenres = {};
+    objGenres = this.movieService.objGenres;
     constructor(
         private router: Router,
         private movieService: MovieService) { }
@@ -21,9 +21,8 @@ export class MovieListComponent implements OnInit {
         this.movieService.getGenre()
             .subscribe(res => {
                 this.genres = res.genres;
-                console.log(this.genres);
                 this.genres.forEach(genre => {
-                    this.objGenres[genre.id] = genre.name;
+                    this.movieService.objGenres[genre.id] = genre.name;
                 });
             });
 
@@ -32,7 +31,6 @@ export class MovieListComponent implements OnInit {
         this.movieService.getMovies()
             .subscribe(movies => {
                 this.movies = movies.results;
-
             });
         console.log('this.movies ', this.movies)
 

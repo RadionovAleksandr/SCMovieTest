@@ -6,18 +6,31 @@
 
 <section class="info-movies">
     <div class="card-movie movie-card--big">
-        <img class="r" src="https://image.tmdb.org/t/p/w500{{movie.backdrop_path}}" alt="Постер">
+        <img class="r" src="https://image.tmdb.org/t/p/w500{{movie?.backdrop_path}}" alt="Постер">
     </div>
 
     <div class="info-movies-wrap">
-        <b class="title-movie">{{movie. title}}</b>
-        <div class="text-movie">
-            {{movie.overview}}
-        </div>
+        <b class="title-movie">{{movie?.title}}</b>
+        <div class="text-movie">{{movie?.overview}}</div>
 
         <button class="btn" (click)="addBookmarks(movie)">add bookmarks</button>
-        <div class="budget">Budget {{movie.budget}}</div>
-        <div class="vote-average">Viewers rating{{movie.vote_average}}</div>
-        <div class="popularity">Views{{movie.popularity}}</div>
+        <div class="budget">Budget {{movie?.budget}}</div>
+        <div class="popularity">Views{{movie?.popularity}}</div>
+        <div class="vote-average">Release_date{{movie?.release_date}}</div>
+        <div class="popularity">Vote count{{movie?.vote_count}}</div>
+        <div class="vote-average">Viewers rating{{movie?.vote_average}}</div>
+        <div class="genres-wrap"><b>Genre:</b>{{movie?.genre_ids}}
+            <div class="genres" *ngFor="let genre of movie?.genres">
+                <div class="genres">{{genre.name}}</div>
+            </div>
+        </div>
+    </div>
+    <div class="similar-box">
+        <div class="similar" *ngFor="let similar of moviesSImilar">
+            <div>{{similar.title}}</div>
+            <div>{{similar.vote_average}}</div>
+            <div>{{similar.release_date}}</div>
+            <img src="https://image.tmdb.org/t/p/w200{{similar.backdrop_path}}">
+        </div>
     </div>
 </section>
