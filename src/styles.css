@@ -40,6 +40,7 @@ html {
 .bookmarks-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: space-around;
 }
 
 .info-movies {
@@ -48,7 +49,7 @@ html {
 
 .movie-card,
 .bookmarks-card {
-    width: 300px;
+    width: 400px;
     height: auto;
     margin: 20px 30px;
 }

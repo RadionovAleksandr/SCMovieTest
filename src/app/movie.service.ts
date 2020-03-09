@@ -16,11 +16,20 @@ export interface Movie {
     title: string,
     vote_average: number,
     overview: string,
-    release_date: void  // hz object date ?
+    release_date: void,  // hz object date ?
+    genres: [string],
 }
 
 export interface ResponceMovieNow {
     results: Movie[]
+}
+
+export interface Genre {
+    id: number,
+    name: string
+}
+export interface ResponceGenre {
+    genres: Genre[]
 }
 @Injectable({
     providedIn: 'root'
@@ -29,14 +38,14 @@ export interface ResponceMovieNow {
 export class MovieService implements OnInit {
     movies: Movie[];
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient) { }
 
     getMovies(): Observable<ResponceMovieNow> {
-      return  this.http.get<ResponceMovieNow>('https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
-        // .subscribe(moviesRespponce => {
-        //     this.movies = moviesRespponce.results;
-        //     console.log(' this.movies1 ', this.movies);
-        // });
+        return this.http.get<ResponceMovieNow>('https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
+    }
+
+    getGenre(): Observable<ResponceGenre> {
+        return this.http.get<ResponceGenre>('https://api.themoviedb.org/3/genre/movie/list?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
     }
 
     ngOnInit() {

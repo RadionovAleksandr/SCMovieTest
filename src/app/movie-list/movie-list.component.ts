@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService, Movie } from '../movie.service';
+import { MovieService, Movie, Genre } from '../movie.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -11,17 +11,34 @@ export class MovieListComponent implements OnInit {
 
     search: string = ''
     movies: Movie[];
+    genres: Genre[];
+    objGenres = {};
     constructor(
         private router: Router,
         private movieService: MovieService) { }
 
     ngOnInit() {
-        console.log(' movie List ');
+        this.movieService.getGenre()
+            .subscribe(res => {
+                this.genres = res.genres;
+                console.log(this.genres);
+                this.genres.forEach(genre => {
+                    this.objGenres[genre.id] = genre.name;
+                });
+            });
+
+            console.log(' this.objGenres ', this.objGenres);
+
         this.movieService.getMovies()
             .subscribe(movies => {
-                this.movies = movies.results
+                this.movies = movies.results;
+
             });
+        console.log('this.movies ', this.movies)
+
     };
+
+
 
     // openCard(id: number) {
     //     console.log(' id ' + id);

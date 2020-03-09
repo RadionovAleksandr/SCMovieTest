@@ -4,11 +4,20 @@
 
     </div>
     <div class="movie-list-box">
+        <!-- to do movie-list-wrap -->
         <ul class="movie-list">
             <div *ngFor="let movie of movies | search:search">
+                <!-- todo implement using get/search/movie-->
                 <li class="movie-card" [routerLink]="['/info', movie.id]">
-                    <img class="card-poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" id="{{movie.id}}">
-                    <div class=" text ">{{movie.title}}</div>
+                    <img class="card-poster" src="https://image.tmdb.org/t/p/w400{{movie.poster_path}}" id="{{movie.id}}">
+                    <div class="text"><b>title:</b> {{movie.title}}</div>
+                    <div class="text"><b>overview</b>: {{movie.overview}}</div>
+                    <div class="text"><b>release_date</b>: {{movie.release_date}}</div>
+                    <div class="genre-wrap"> <b>genre</b></div>
+                    <div class="genres" *ngFor="let id of movie.genre_ids">
+                        <div class="genres">{{objGenres[id]}}</div>
+                    </div>
+
                 </li>
             </div>
         </ul>

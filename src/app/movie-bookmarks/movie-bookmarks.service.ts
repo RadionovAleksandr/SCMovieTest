@@ -42,8 +42,6 @@ export class MovieBookmarksService {
             }
         }
     }
+    // todo implement localStorage using 
+    //https://developers.themoviedb.org/4/list/create-list
 }
-
-let b = { key: 4 }
-let a = [b, 1, 2, 3]
-a.includes(b)
