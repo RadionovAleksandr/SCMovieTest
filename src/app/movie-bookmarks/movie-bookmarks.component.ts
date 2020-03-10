@@ -12,7 +12,7 @@ import { MovieBookmarksService } from './movie-bookmarks.service';
 export class MovieBookmarksComponent implements OnInit {
 
     movies: Movie[] = [];
-    arrid: number[]= [];
+    arrid: number[] = [];
 
     constructor(
         private router: Router,
@@ -21,9 +21,14 @@ export class MovieBookmarksComponent implements OnInit {
 
     ngOnInit(): void {
         // this.movies = this.movieBookmarkService.movieBookmarks;
-        this.arrid = this.movieBookmarkService.movieBookmarksId;
-        console.log('this.arrid) ',this.arrid);    
-        this.getBookmarks(this.arrid);
+        console.log(" localStorage.getItem('bookmarks') ", localStorage.getItem('bookmarks'));
+        // if (localStorage) {
+        //     this.getBookmarks((localStorage.getItem('bookmarks')).split(','));
+        // } else {
+            this.arrid = this.movieBookmarkService.movieBookmarksId;
+            console.log('this.arrid) ', this.arrid);
+            this.getBookmarks(this.arrid);
+        // }
     }
 
     delBookmarks(movie) {
@@ -36,13 +41,17 @@ export class MovieBookmarksComponent implements OnInit {
     }
 
     getBookmarks(arrid) {
+        if (localStorage) {
+            arrid = (localStorage.getItem('bookmarks')).split(',');
+        }
+        console.log(' arrid ', arrid);
         arrid.forEach(id => {
             this.movieBookmarkService.getBookmarks(id)
                 .subscribe(movie => {
                     this.movies.push(movie);
                 });
-            })
-        }
+        })
+    }
 
     // goToPostsPage() {
     //     this.router.navigate(['/bookmarks'])
