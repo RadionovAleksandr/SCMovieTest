@@ -33,14 +33,28 @@ export class MovieBookmarksService {
     getBookmarks(id: number): Observable<Movie> {
         return this.http.get<Movie>('https://api.themoviedb.org/3/movie/' + id + '?api_key=07223f1ae4f3155a8e7eadc55a5431eb')
     }
-    
+
     delBookmarks(movie) {
-        for (var i = 0; i < this.movieBookmarks.length; i++) {
-            if (this.movieBookmarks[i].id === movie.id) {
-                this.movieBookmarks.splice(i, 1);
+        console.log('movie ' + movie.id);
+
+        console.log(' this.movieBookmarks.length', this.movieBookmarks.length);
+        for (var i = 0; i < this.movieBookmarksId.length; i++) {
+            console.log(' delBookmarks for2');
+            if (this.movieBookmarks[i]) {
+                if (this.movieBookmarks[i].id === movie.id) {
+                    this.movieBookmarks.splice(i, 1);
+                    i--;
+                }
+            }
+            console.log(' this.movieBookmarksId[i] ', this.movieBookmarksId[i]);
+            console.log(' movie.id ', movie.id);
+            if (this.movieBookmarksId[i] === movie.id) {
+                this.movieBookmarksId.splice(i, 1);
                 i--;
             }
         }
+        console.log(' movieBookmarks ', this.movieBookmarks);
+        console.log(' movieBookmarksId ', this.movieBookmarksId);
     }
     // todo implement localStorage using 
     //https://developers.themoviedb.org/4/list/create-list

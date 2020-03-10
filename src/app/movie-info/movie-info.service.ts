@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 
 export interface MovieSimiral {
     results: void[];
+    total_results: number;
     
 }
 @Injectable({

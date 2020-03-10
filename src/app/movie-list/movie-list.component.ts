@@ -26,14 +26,12 @@ export class MovieListComponent implements OnInit {
                 });
             });
 
-            console.log(' this.objGenres ', this.objGenres);
-
+        console.log(' this.objGenres ', this.objGenres);
         this.movieService.getMovies()
             .subscribe(movies => {
                 this.movies = movies.results;
             });
         console.log('this.movies ', this.movies)
-
     };
 
 

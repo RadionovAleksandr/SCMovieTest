@@ -6,8 +6,42 @@ html {
     /* background-image: linear-gradient(to right bottom, #ffffff 33%, #0039a6 33%, #0039a6 66%, #d52b1e 66%); */
 }
 
+li {
+    list-style-type: none;
+}
 
-/* body {} */
+a {
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    border: 2px solid transparent;
+}
+
+a:focus,
+a:hover {
+    text-decoration: none;
+    color: black;
+    border: 2px solid indianred;
+    border-radius: 15px;
+    /* opacity: 0.6; */
+}
+
+.btn--blue:focus {
+    /* background-color: #803B9D; */
+    background-color: #9661C7;
+}
+
+.btn--green:focus {
+    /* background-color: #803B9D; */
+    background-color: #3A5C67;
+}
+
+body {
+    white-space: pre-wrap;
+    background: radial-gradient( farthest-side at top left, rgba(255, 0, 255, 0.5), #246756), radial-gradient( farthest-corner at bottom right, rgba(255, 50, 50, 0.5), #246756 400px);
+    min-height: 1000px;
+    /* height: 200vmin; */
+}
 
 .header-title {
     padding: 20px 30px;
@@ -19,21 +53,45 @@ html {
 }
 
 .movie-search {
-    width: 80%;
+    width: 60%;
     margin: 0 auto;
     padding: 20px 30px;
-    background-color: rgb(201, 165, 235);
+    background-color: rgb(168, 120, 230);
+    opacity: 0.6;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    font-size: 26px;
+    /* background-color: indianred; */
+}
+
+.movie-search:focus,
+.movie-search:hover {
+    border: 1px solid indianred;
 }
 
 .btn {
     font-size: 16px;
-    padding: 20px;
-    background-color: grey;
+    padding: 10px;
+    /* background-color: rgb(168, 120, 230); */
+    background-color: #5F4B83;
+    border-radius: 5px;
+    border: 1px solid transparent;
+}
+
+.btn:focus,
+.btn:hover {
+    border: 1px solid indianred;
+    opacity: 0.6;
+}
+
+.bookmarks {
+    max-width: 250px;
+    font-size: 24px;
+    margin-left: auto;
 }
 
 .btn--bookmarks {
-    max-width: 200px;
-    margin-left: auto;
+    margin-left: 300px;
 }
 
 .movie-list,
@@ -56,9 +114,15 @@ html {
 }
 
 .movie-card--big {
-    width: 40%;
+    width: 50%;
     height: auto;
-    margin: 20px 30px;
+    /* margin: 20px 30px; */
+    /* margin: auto; */
+}
+
+.movie-card--big img {
+    /* margin: 20px; */
+    margin-left: 120px;
 }
 
 .info-movies-wrap {
@@ -67,7 +131,31 @@ html {
 
 .similar-box {
     margin: auto;
+    margin-top: 100px;
     width: 80%;
     display: flex;
     flex-wrap: wrap;
+}
+
+.similar-item {
+    padding: 20px 0px;
+}
+
+.genre-wrap-item {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genre-item {
+    padding: 10px 10px;
+    /* background-color: indianred; */
+    background-color: rgb(168, 120, 230);
+}
+
+.box {
+    display: flex;
+}
+
+.text {
+    margin-right: 30px;
 }

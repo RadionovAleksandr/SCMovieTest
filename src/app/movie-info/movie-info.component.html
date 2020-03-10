@@ -10,10 +10,10 @@
     </div>
 
     <div class="info-movies-wrap">
-        <b class="title-movie">{{movie?.title}}</b>
-        <div class="text-movie">{{movie?.overview}}</div>
 
-        <button class="btn" (click)="addBookmarks(movie)">add bookmarks</button>
+        <b class="title-movie">{{movie?.title}}</b>
+        <button class="btn btn--bookmarks btn--green" (click)="addBookmarks(movie)">add bookmarks</button>
+        <div class="text-movie">{{movie?.overview}}</div>
         <div class="budget">Budget {{movie?.budget}}</div>
         <div class="popularity">Views{{movie?.popularity}}</div>
         <div class="vote-average">Release_date{{movie?.release_date}}</div>
@@ -25,12 +25,19 @@
             </div>
         </div>
     </div>
+
+    <!-- <div class="similar-box" *ngIf="[isViewSimilar]; else elseTemplate"> -->
     <div class="similar-box">
-        <div class="similar" *ngFor="let similar of moviesSImilar">
+        <div class="similar-item" *ngFor="let similar of moviesSImilar">
             <div>{{similar.title}}</div>
             <div>{{similar.vote_average}}</div>
             <div>{{similar.release_date}}</div>
             <img src="https://image.tmdb.org/t/p/w200{{similar.backdrop_path}}">
         </div>
     </div>
+    <!-- </div> -->
+
+    <!-- <ng-template #elseTemplate>
+        <b>Этот филь пока не обзавелся списком похожих фильмов</b>
+    </ng-template> -->
 </section>

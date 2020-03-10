@@ -22,12 +22,17 @@ export class MovieBookmarksComponent implements OnInit {
     ngOnInit(): void {
         // this.movies = this.movieBookmarkService.movieBookmarks;
         this.arrid = this.movieBookmarkService.movieBookmarksId;
-        console.log(this.arrid);    
+        console.log('this.arrid) ',this.arrid);    
         this.getBookmarks(this.arrid);
     }
 
     delBookmarks(movie) {
         this.movieBookmarkService.delBookmarks(movie);
+        this.movies = this.movieBookmarkService.movieBookmarks;
+        this.getBookmarks(this.arrid);
+        // console.log('this.arrid ',this.movieBookmarkService.movieBookmarksId);
+
+        console.log('this.movies ', this.movies)
     }
 
     getBookmarks(arrid) {
