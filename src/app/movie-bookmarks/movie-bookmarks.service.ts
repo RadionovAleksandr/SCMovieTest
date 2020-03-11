@@ -12,38 +12,38 @@ export class MovieBookmarksService {
     movieBookmarks: Movie[] = [];  //new Map
     movieBookmarksId: number[] = [];
     arrId;
+    movies;
 
- 
+
 
     constructor(private http: HttpClient) { }
 
-    // this method save object movie
-    // addBookmarks(movieBookmarks) {
-    //     if(this.movieBookmarks.includes(movieBookmarks) === false) {
-    //         this.movieBookmarks.push(movieBookmarks);
-    //     }
-    //     console.log('service BM this.movieBookmarks ', this.movieBookmarks)
-    // }
-
-    // this method save propherty id object movie
-    addBookmarks(movieBookmarks) {
-        if (this.movieBookmarksId.includes(movieBookmarks.id) === false) {
-            this.movieBookmarksId.push(movieBookmarks.id);
-            localStorage.setItem('bookmarks', this.movieBookmarksId)
+    // this method save object movie and save propherty id object movie
+    addBookmarks(movie) {
+        if (this.movieBookmarksId.includes(movie.id) === false) {
+            this.movieBookmarksId.push(movie.id);
+            localStorage.setItem('bookmarks', this.movieBookmarksId.join());
+            this.movieBookmarks.push(movie);
         }
-        console.log('service BM this.movieBookmarks ', this.movieBookmarksId)
+        console.log('service BM this.movieBookmarksId ', this.movieBookmarksId);
+        console.log('service BM this.movieBookmarksId ', this.movieBookmarks);
     }
 
-    getBookmarks(id: number): Observable<Movie> {
+    getBookmarks(id): Observable<Movie> {
         return this.http.get<Movie>('https://api.themoviedb.org/3/movie/' + id + '?api_key=07223f1ae4f3155a8e7eadc55a5431eb')
+    }
+
+    setMovie(movie: Movie) {
+        this.movieBookmarks.push(movie);
     }
 
     delBookmarks(movie) {
         console.log('movie ' + movie.id);
         console.log(' this.movieBookmarksId.length', this.movieBookmarksId.length);
-        // let arrId = localStorage.getItem('bookmarks').split(',');
-        if(localStorage) {
-            this.arrId = localStorage.getItem('bookmarks').split(',');
+        console.log('START delBookmarks this.movieBookmarks: ', this.movieBookmarks);
+
+        if (localStorage.getItem('bookmarks')) {
+            this.arrId = (localStorage.getItem('bookmarks')).split(',');
         }
         console.log(' arrId ', this.arrId);
 
@@ -55,17 +55,11 @@ export class MovieBookmarksService {
                     // i--;
                 }
             }
-            // console.log(' this.movieBookmarksId[i] ', this.movieBookmarksId[i]);
-            // console.log(' movie.id ', movie.id);
+
             if (this.movieBookmarksId[i] === movie.id) {
                 this.movieBookmarksId.splice(i, 1);
                 // i--;
             }
-            console.log('!!!!!!!!!');
-            console.log(this.arrId);
-            console.log("[0] ", this.arrId[0]);
-            console.log(this.arrId[i]);
-            console.log(movie.id);
 
             if (this.arrId[i] == movie.id) {
                 console.log(111111111)
@@ -74,11 +68,11 @@ export class MovieBookmarksService {
             }
         }
 
-        console.log('after del ', this.arrId)
+        console.log('after del ', this.arrId);
+        console.log(' this.movieBookmarks: ',  this.movieBookmarks);
         localStorage.clear();
-        // this.arrId.forEach(id => {
-            localStorage.setItem('bookmarks', this.arrId)
-        // });
+        localStorage.setItem('bookmarks', this.arrId)
+
 
         console.log(" after del localStorage.getItem('bookmarks') ", localStorage.getItem('bookmarks'))
         console.log(' movieBookmarks ', this.movieBookmarks);

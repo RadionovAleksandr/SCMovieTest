@@ -11,7 +11,7 @@ import { MovieBookmarksService } from './movie-bookmarks.service';
 
 export class MovieBookmarksComponent implements OnInit {
 
-    movies: Movie[] = [];
+    movies: Movie[];
     arrid: number[] = [];
 
     constructor(
@@ -20,27 +20,24 @@ export class MovieBookmarksComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        // this.movies = this.movieBookmarkService.movieBookmarks;
-        console.log(" localStorage.getItem('bookmarks') ", localStorage.getItem('bookmarks'));
-        // if (localStorage) {
-        //     this.getBookmarks((localStorage.getItem('bookmarks')).split(','));
-        // } else {
-            this.arrid = this.movieBookmarkService.movieBookmarksId;
-            console.log('this.arrid) ', this.arrid);
-            this.getBookmarks(this.arrid);
-        // }
+        if(this.movieBookmarkService.movieBookmarks.length !== 0) {
+            console.log(' достаю из service');
+            this.movies = this.movieBookmarkService.movieBookmarks;
+        } else {
+            console.log(' достаю из localStorage c id: ', (localStorage.getItem('bookmarks')).split(','));
+            this.getBookmarks((localStorage.getItem('bookmarks')).split(','));
+            this.movies = this.movieBookmarkService.movieBookmarks;
+        }
     }
 
     delBookmarks(movie) {
         this.movieBookmarkService.delBookmarks(movie);
         this.movies = this.movieBookmarkService.movieBookmarks;
-        this.getBookmarks(this.arrid);
-        // console.log('this.arrid ',this.movieBookmarkService.movieBookmarksId);
-
-        console.log('this.movies ', this.movies)
+        console.log('this.movies ', this.movies);
     }
 
     getBookmarks(arrid) {
+        console.log(this.movies);
         if (localStorage) {
             arrid = (localStorage.getItem('bookmarks')).split(',');
         }
@@ -48,7 +45,7 @@ export class MovieBookmarksComponent implements OnInit {
         arrid.forEach(id => {
             this.movieBookmarkService.getBookmarks(id)
                 .subscribe(movie => {
-                    this.movies.push(movie);
+                    this.movieBookmarkService.addBookmarks(movie);
                 });
         })
     }

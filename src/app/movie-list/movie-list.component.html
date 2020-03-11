@@ -1,7 +1,6 @@
 <section class="movie">
     <div class="movie-top-wrap">
         <input class="movie-search" value="окно поиска" [(ngModel)]="search">
-
     </div>
     <div class="movie-list-box">
         <!-- to do movie-list-wrap -->
@@ -31,4 +30,10 @@
             </div>
         </ul>
     </div>
+
+    <pre>
+        {{pages}}
+    </pre>
+
+    <nav *ngFor="let page of pages">{{page}}</nav>
 </section>

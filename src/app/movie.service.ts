@@ -23,6 +23,7 @@ export interface Movie {
 
 export interface ResponceMovieNow {
     results: Movie[]
+    total_pages: number;
 }
 
 export interface Genre {

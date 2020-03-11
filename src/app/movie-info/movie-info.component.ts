@@ -55,6 +55,7 @@ export class MovieInfoComponent implements OnInit {
                     });
             })
     }
+    
     addBookmarks(movie: Movie) {
         this.movieBookmarksService.addBookmarks(movie);
     }

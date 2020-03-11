@@ -11,7 +11,9 @@ export class MovieListComponent implements OnInit {
 
     search: string = ''
     movies: Movie[];
+    countPages: number[];
     genres: Genre[];
+    pages = [];
     objGenres = this.movieService.objGenres;
     constructor(
         private router: Router,
@@ -30,8 +32,12 @@ export class MovieListComponent implements OnInit {
         this.movieService.getMovies()
             .subscribe(movies => {
                 this.movies = movies.results;
+                for (var i = 0; i <= movies.total_pages; ++i) {
+                    this.pages.push(i);
+                }
+                console.log(this.pages.length);
+                console.log(this.pages[0])
             });
-        console.log('this.movies ', this.movies)
     };
 
 
