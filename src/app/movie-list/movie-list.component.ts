@@ -14,10 +14,18 @@ export class MovieListComponent implements OnInit {
     countPages: number[];
     genres: Genre[];
     pages = [];
+    page: number = 1
     objGenres = this.movieService.objGenres;
     constructor(
-        private router: Router,
         private movieService: MovieService) { }
+
+    getMovies(page) {
+        this.movieService.getMovies(page)
+            .subscribe(movies => {
+                this.movies = movies.results;
+                localStorage.setItem('page', page)
+            });
+    }
 
     ngOnInit() {
         this.movieService.getGenre()
@@ -27,20 +35,17 @@ export class MovieListComponent implements OnInit {
                     this.movieService.objGenres[genre.id] = genre.name;
                 });
             });
+            localStorage.getItem('page') ? this.page = Number(localStorage.getItem('page')) : this.page = 1;
 
-        console.log(' this.objGenres ', this.objGenres);
-        this.movieService.getMovies()
+        this.movieService.getMovies(this.page)
             .subscribe(movies => {
                 this.movies = movies.results;
+
                 for (var i = 0; i <= movies.total_pages; ++i) {
                     this.pages.push(i);
                 }
-                console.log(this.pages.length);
-                console.log(this.pages[0])
             });
     };
-
-
 
     // openCard(id: number) {
     //     console.log(' id ' + id);

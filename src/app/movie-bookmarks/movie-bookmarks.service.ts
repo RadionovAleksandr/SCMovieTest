@@ -38,9 +38,9 @@ export class MovieBookmarksService {
     }
 
     delBookmarks(movie) {
-        console.log('movie ' + movie.id);
-        console.log(' this.movieBookmarksId.length', this.movieBookmarksId.length);
-        console.log('START delBookmarks this.movieBookmarks: ', this.movieBookmarks);
+        // console.log('movie ' + movie.id);
+        // console.log(' this.movieBookmarksId.length', this.movieBookmarksId.length);
+        // console.log('START delBookmarks this.movieBookmarks: ', this.movieBookmarks);
 
         if (localStorage.getItem('bookmarks')) {
             this.arrId = (localStorage.getItem('bookmarks')).split(',');
@@ -56,27 +56,27 @@ export class MovieBookmarksService {
                 }
             }
 
-            if (this.movieBookmarksId[i] === movie.id) {
-                this.movieBookmarksId.splice(i, 1);
-                // i--;
-            }
+            // if (this.movieBookmarksId[i] === movie.id) {
+            //     this.movieBookmarksId.splice(i, 1);
+            //     // i--;
+            // }
 
             if (this.arrId[i] == movie.id) {
-                console.log(111111111)
                 this.arrId.splice(i, 1);
                 i--;
             }
         }
+        this.movieBookmarksId = this.arrId;
 
-        console.log('after del ', this.arrId);
-        console.log(' this.movieBookmarks: ',  this.movieBookmarks);
+        // console.log('after del ', this.arrId);
+        // console.log(' this.movieBookmarks: ',  this.movieBookmarks);
         localStorage.clear();
         localStorage.setItem('bookmarks', this.arrId)
 
 
-        console.log(" after del localStorage.getItem('bookmarks') ", localStorage.getItem('bookmarks'))
-        console.log(' movieBookmarks ', this.movieBookmarks);
-        console.log(' movieBookmarksId ', this.movieBookmarksId);
+        // console.log(" after del localStorage.getItem('bookmarks') ", localStorage.getItem('bookmarks'))
+        // console.log(' movieBookmarks ', this.movieBookmarks);
+        // console.log(' movieBookmarksId ', this.movieBookmarksId);
     }
     // todo implement localStorage using 
     //https://developers.themoviedb.org/4/list/create-list

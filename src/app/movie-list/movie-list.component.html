@@ -31,9 +31,7 @@
         </ul>
     </div>
 
-    <pre>
-        {{pages}}
-    </pre>
-
-    <nav *ngFor="let page of pages">{{page}}</nav>
+    <nav>
+        <span *ngFor="let page of pages" (click)="getMovies(page)">{{page}}</span>
+    </nav>
 </section>

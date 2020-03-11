@@ -43,8 +43,8 @@ export class MovieService implements OnInit {
 
     constructor(private http: HttpClient) { }
 
-    getMovies(): Observable<ResponceMovieNow> {
-        return this.http.get<ResponceMovieNow>('https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
+    getMovies(page): Observable<ResponceMovieNow> {
+        return this.http.get<ResponceMovieNow>(`https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb&language=en-US&page=${page}`);
     }
 
     getGenre(): Observable<ResponceGenre> {
