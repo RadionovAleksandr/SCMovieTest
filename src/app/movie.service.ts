@@ -18,6 +18,7 @@ export interface Movie {
     overview: string,
     release_date: void,  // hz object date ?
     genres: [string],
+    bookmark: boolean
 }
 
 

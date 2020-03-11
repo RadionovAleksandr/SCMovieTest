@@ -8,7 +8,14 @@
             <div *ngFor="let movie of movies | search:search">
                 <!-- todo implement using get/search/movie-->
                 <li class="movie-card" [routerLink]="['/info', movie.id]">
+
+                    <pre>
+                        {{local.bookmarks == movie.id}}
+                    </pre>
                     <img class="card-poster" src="https://image.tmdb.org/t/p/w400{{movie.poster_path}}" id="{{movie.id}}">
+                    <div class="stars">
+                        <div [ngClass]="{'star': local.bookmarks == movie.id}"></div>
+                    </div>
 
 
                     <h3 class="text"><b>Title:</b> {{movie.title}}</h3>

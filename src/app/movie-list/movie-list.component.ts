@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService, Movie, Genre } from '../movie.service';
-import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-movie-list',
@@ -14,8 +13,9 @@ export class MovieListComponent implements OnInit {
     countPages: number[];
     genres: Genre[];
     pages = [];
-    page: number = 1
+    page: number;
     objGenres = this.movieService.objGenres;
+    local;
     constructor(
         private movieService: MovieService) { }
 
@@ -28,6 +28,7 @@ export class MovieListComponent implements OnInit {
     }
 
     ngOnInit() {
+        this.local = localStorage;
         this.movieService.getGenre()
             .subscribe(res => {
                 this.genres = res.genres;

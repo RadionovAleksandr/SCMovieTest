@@ -21,12 +21,13 @@ export class MovieBookmarksService {
     // this method save object movie and save propherty id object movie
     addBookmarks(movie) {
         if (this.movieBookmarksId.includes(movie.id) === false) {
+  
             this.movieBookmarksId.push(movie.id);
             localStorage.setItem('bookmarks', this.movieBookmarksId.join());
             this.movieBookmarks.push(movie);
         }
-        console.log('service BM this.movieBookmarksId ', this.movieBookmarksId);
-        console.log('service BM this.movieBookmarksId ', this.movieBookmarks);
+        movie.bookmark = true;
+        console.log(' movie.bookmark ', movie.bookmark);
     }
 
     getBookmarks(id): Observable<Movie> {
@@ -41,10 +42,11 @@ export class MovieBookmarksService {
         // console.log('movie ' + movie.id);
         // console.log(' this.movieBookmarksId.length', this.movieBookmarksId.length);
         // console.log('START delBookmarks this.movieBookmarks: ', this.movieBookmarks);
-
-        if (localStorage.getItem('bookmarks')) {
-            this.arrId = (localStorage.getItem('bookmarks')).split(',');
-        }
+        movie.bookmark = false;
+        console.log(' movie.bookmark ', movie.bookmark);
+        // if (localStorage.getItem('bookmarks')) {
+        this.arrId = (localStorage.getItem('bookmarks')).split(',');
+        // }
         console.log(' arrId ', this.arrId);
 
         for (var i = 0; i < this.movieBookmarksId.length; i++) {
