@@ -9,6 +9,7 @@ import { MovieBookmarksComponent } from './movie-bookmarks/movie-bookmarks.compo
 import { MovieInfoComponent } from './movie-info/movie-info.component';
 import { MovieListComponent } from './movie-list/movie-list.component';
 import { SearchPipe } from './pipes/search.pipe';
+import { NgbdPaginationBasicModule } from './pagination-basic/pagination-basic.module';
 
 @NgModule({
   declarations: [
@@ -22,9 +23,15 @@ import { SearchPipe } from './pipes/search.pipe';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbdPaginationBasicModule
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  exports: [],
+  bootstrap: [
+    AppComponent
+  ]
+
 })
 export class AppModule { }
+

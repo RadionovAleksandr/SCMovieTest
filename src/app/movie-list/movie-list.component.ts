@@ -10,9 +10,10 @@ export class MovieListComponent implements OnInit {
 
     search: string = ''
     movies: Movie[];
-    countPages: number[];
+    // countPages: number[];
     genres: Genre[];
-    pages = [];
+    // pages = [];
+    countPages: number;
     page: number;
     objGenres = this.movieService.objGenres;
     local;
@@ -36,15 +37,15 @@ export class MovieListComponent implements OnInit {
                     this.movieService.objGenres[genre.id] = genre.name;
                 });
             });
-            localStorage.getItem('page') ? this.page = Number(localStorage.getItem('page')) : this.page = 1;
+        localStorage.getItem('page') ? this.page = Number(localStorage.getItem('page')) : this.page = 1;
 
         this.movieService.getMovies(this.page)
             .subscribe(movies => {
                 this.movies = movies.results;
-
-                for (var i = 0; i <= movies.total_pages; ++i) {
-                    this.pages.push(i);
-                }
+                this.countPages = movies.total_pages;
+                // for (var i = 1; i <= movies.total_pages; ++i) {
+                //     this.pages.push(i);
+                // }
             });
     };
 
