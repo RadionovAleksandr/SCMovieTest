@@ -9,6 +9,7 @@ import { MovieListComponent } from 'src/app/pages/movie-list/movie-list.componen
 })
 export class SearchComponent implements OnInit {
     @Input() search: string;
+    inputValue: string = "окно поиска";
     constructor(
         private movieService: MovieService,
         private movieListComponent: MovieListComponent
@@ -19,6 +20,12 @@ export class SearchComponent implements OnInit {
             .subscribe(movies => {
                 this.movieListComponent.movies = movies.results;
             });
+            localStorage.set('search', str);
     }
+
+    focus() {
+        this.inputValue = null;
+    }
+
     ngOnInit(): void { }
 }

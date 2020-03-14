@@ -1,1 +1,1 @@
-<input class="movie-search" value="окно поиска" (keyup.enter)="getSearchMovie($event.target.value)">
+<input class="movie-search" [value]="inputValue" (click)="focus()" (keyup.enter)="getSearchMovie($event.target.value)">

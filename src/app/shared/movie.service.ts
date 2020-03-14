@@ -111,6 +111,15 @@ export class MovieService {
         return this.http.get<MovieSimiral>('https://api.themoviedb.org/3/movie/' + movieID +
             '/similar?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
     }
+
+    getlocal(){
+        return localStorage;
+    }
+
+    setLocal(page) {
+        localStorage.setItem("page", page);
+        console.log(localStorage)
+    }
 }
 
 

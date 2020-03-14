@@ -1,5 +1,6 @@
 import { Component, Input, Output } from '@angular/core';
 import { MovieService } from '../../movie.service';
+import { MovieListComponent } from 'src/app/pages/movie-list/movie-list.component';
 
 @Component({
     selector: 'app-pagination',
@@ -7,7 +8,10 @@ import { MovieService } from '../../movie.service';
 })
 
 export class NgbdPaginationComponent {
-    constructor(private movieService: MovieService) { }
+    constructor(
+        private movieService: MovieService,
+        private movieListComponent: MovieListComponent
+        ) { }
     @Input() pages: number;
     @Input() pageSize: number;
     @Input() totalResults: number;
@@ -21,7 +25,9 @@ export class NgbdPaginationComponent {
         this.movieService.getMovies(pageChange)
         .subscribe((movies) => {
             console.log(movies);
-            localStorage.setItem('page', pageChange);
+            this.movieListComponent.movies = movies.results;
+            this.movieService.setLocal(pageChange);
+            // localStorage.setItem('page', pageChange);
         });
     }
 }

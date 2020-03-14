@@ -22,16 +22,18 @@ export class MovieListComponent implements OnInit {
     constructor(private movieService: MovieService) { }
 
     getMovies(page) {
+        // if(localStorage.getItem(search))  check  loaclstorage
         this.movieService.getMovies(page)
             .subscribe(movies => {
                 this.movies = movies.results;
-                // this.movieService.movies = movies.results;
-                localStorage.setItem('page', page);
+                this.movieService.setLocal(page);
+                // localStorage.setItem('page', page);
             });
     }
 
     ngOnInit() {
-        this.local = localStorage;
+        // this.local = localStorage;
+        this.local = this.movieService.getlocal();
         this.movieService.getGenre()
             .subscribe(res => {
                 this.genres = res.genres;
@@ -49,12 +51,4 @@ export class MovieListComponent implements OnInit {
                 this.pageSize = movies.results.length;
             });
     }
-
-    // openCard(id: number) {
-    //     console.log(' id ' + id);
-    // };
-
-    // goToPostsPage() {
-    //     this.router.navigate(['/'])
-    // };
 }
