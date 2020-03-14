@@ -1,0 +1,17 @@
+<section class="movie">
+    <div class="movie-top-wrap">
+        <input class="movie-search" value="окно поиска" [(ngModel)]="search">
+    </div>
+    <div class="movie-list-box">
+        <!-- to do movie-list-wrap -->
+        <ul class="movie-list">
+            <!-- todo implement using get/search/movie-->
+            <li class="movie-card" [routerLink]="['/info', movie.id]" *ngFor="let movie of movies | search:search">
+                <div>
+                    <app-card [movie]="movie" [objGenres]="objGenres"></app-card>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <app-pagination [pageSize]="pageSize" [pages]="countPages" [totalResults]="totalResults"></app-pagination>
+</section>

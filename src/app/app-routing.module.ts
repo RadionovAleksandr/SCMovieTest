@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { MovieInfoComponent } from './movie-info/movie-info.component';
-import { MovieBookmarksComponent } from './movie-bookmarks/movie-bookmarks.component';
-import { MovieListComponent } from './movie-list/movie-list.component';
+import { MovieBookmarksComponent } from './pages/movie-bookmarks/movie-bookmarks.component';
+import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { AppComponent } from './app.component';
+import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 
 
 const routes: Routes = [
@@ -12,7 +12,7 @@ const routes: Routes = [
     { path: 'info', component: MovieInfoComponent },
     { path: 'info/:id', component: MovieInfoComponent },
     { path: '', component: MovieListComponent }
-]
+];
 
 @NgModule({
     imports: [RouterModule.forRoot(routes)],

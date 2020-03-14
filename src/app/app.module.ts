@@ -5,11 +5,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppRoutingModule} from './app-routing.module';
 
 import { AppComponent } from './app.component';
-import { MovieBookmarksComponent } from './movie-bookmarks/movie-bookmarks.component';
-import { MovieInfoComponent } from './movie-info/movie-info.component';
-import { MovieListComponent } from './movie-list/movie-list.component';
-import { SearchPipe } from './pipes/search.pipe';
-import { NgbdPaginationBasicModule } from './pagination-basic/pagination-basic.module';
+import { MovieBookmarksComponent } from './pages/movie-bookmarks/movie-bookmarks.component';
+import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
+import { MovieListComponent } from './pages/movie-list/movie-list.component';
+import { SearchPipe } from './shared/pipes/search.pipe';
+import { NgbdPaginationModule } from './shared/components/pagination/pagination-component.module';
+import { CardComponent } from './shared/components/card/card.component';
 
 @NgModule({
   declarations: [
@@ -17,14 +18,15 @@ import { NgbdPaginationBasicModule } from './pagination-basic/pagination-basic.m
     MovieBookmarksComponent,
     MovieInfoComponent,
     MovieListComponent,
-    SearchPipe
+    SearchPipe,
+    CardComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    NgbdPaginationBasicModule
+    NgbdPaginationModule
   ],
   providers: [],
   exports: [],

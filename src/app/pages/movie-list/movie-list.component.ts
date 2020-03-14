@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MovieService, Movie, Genre } from '../movie.service';
+import { MovieService, Movie, Genre } from '../../shared/movie.service';
 
 @Component({
     selector: 'app-movie-list',
@@ -8,23 +8,24 @@ import { MovieService, Movie, Genre } from '../movie.service';
 })
 export class MovieListComponent implements OnInit {
 
-    search: string = ''
+    search: string;
     movies: Movie[];
     // countPages: number[];
     genres: Genre[];
     // pages = [];
     countPages: number;
+    pageSize: number;
+    totalResults: number;
     page: number;
     objGenres = this.movieService.objGenres;
     local;
-    constructor(
-        private movieService: MovieService) { }
+    constructor(private movieService: MovieService) { }
 
     getMovies(page) {
         this.movieService.getMovies(page)
             .subscribe(movies => {
                 this.movies = movies.results;
-                localStorage.setItem('page', page)
+                localStorage.setItem('page', page);
             });
     }
 
@@ -42,12 +43,11 @@ export class MovieListComponent implements OnInit {
         this.movieService.getMovies(this.page)
             .subscribe(movies => {
                 this.movies = movies.results;
+                this.totalResults = movies.total_results;
                 this.countPages = movies.total_pages;
-                // for (var i = 1; i <= movies.total_pages; ++i) {
-                //     this.pages.push(i);
-                // }
+                this.pageSize = movies.results.length;
             });
-    };
+    }
 
     // openCard(id: number) {
     //     console.log(' id ' + id);

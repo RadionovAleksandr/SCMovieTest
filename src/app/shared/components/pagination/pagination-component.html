@@ -4,10 +4,7 @@
 <p>No direction links:</p>
 <ngb-pagination [collectionSize]="70" [(page)]="page" [directionLinks]="false"></ngb-pagination> -->
 
-<p>With boundary links:</p>
-<ngb-pagination [collectionSize]="pages" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
+
+<ngb-pagination (pageChange)="getPage($event)" [collectionSize]="totalResults" [maxSize]="maxSize" [pageSize]="pageSize" [(page)]="page" [boundaryLinks]="true"></ngb-pagination>
 
 <hr>
-
-<pre>Current page: {{page}} </pre>
-<pre>count page: {{pages}} </pre>

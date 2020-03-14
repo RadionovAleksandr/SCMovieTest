@@ -1,13 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-
-import { MovieInfoService } from './movie-info.service';
-
-import { observable } from 'rxjs';
-import { Movie, Genre } from '../movie.service';
-import { Route } from '@angular/compiler/src/core';
+import { Movie } from '../../shared/movie.service';
 import { ActivatedRoute, Params } from '@angular/router';
-import { MovieBookmarksService } from '../movie-bookmarks/movie-bookmarks.service'
-import { MovieService } from '../movie.service'
+import { MovieService } from '../../shared/movie.service';
 
 @Component({
     selector: 'app-movie-info',
@@ -17,18 +11,15 @@ import { MovieService } from '../movie.service'
 
 export class MovieInfoComponent implements OnInit {
 
-    // id: number;
     movie;//: void;
     moviesSImilar;
 
-    // isViewSimilar: boolean = true;
 
     bookmarks: Movie[] = [];
 
     constructor(
         private route: ActivatedRoute,
-        private movieInfoService: MovieInfoService,
-        private movieBookmarksService: MovieBookmarksService,
+        private movieService: MovieService,
     ) { }
 
     ngOnInit(): void {
@@ -36,27 +27,24 @@ export class MovieInfoComponent implements OnInit {
 
         this.route.params
             .subscribe((params: Params) => {
-                this.movieInfoService.getMoviesDetails(params.id)
+                this.movieService.getMoviesDetails(params.id)
                     .subscribe(movie => {
-                        this.movie = movie
-                        // console.log(movie)
+                        this.movie = movie;
                     });
 
-                this.movieInfoService.getMoviesSimilar(params.id)
+                this.movieService.getMoviesSimilar(params.id)
                     .subscribe(movies => {
-                        // console.log(movies.total_results)
                         if (movies.total_results !== 0) {
-                            this.moviesSImilar = movies.results
+                            this.moviesSImilar = movies.results;
                             // this.isViewSimilar = true;
                         } else {
-                            console.log(222222)
+                            console.log(222222);
                             // this.isViewSimilar = false;
                         }
                     });
-            })
+            });
     }
-    
     addBookmarks(movie: Movie) {
-        this.movieBookmarksService.addBookmarks(movie);
+        this.movieService.addBookmarks(movie);
     }
 }
