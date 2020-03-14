@@ -13,8 +13,6 @@ export class MovieInfoComponent implements OnInit {
 
     movie;//: void;
     moviesSImilar;
-
-
     bookmarks: Movie[] = [];
 
     constructor(

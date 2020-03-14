@@ -1,12 +1,12 @@
 <section class="movie">
     <div class="movie-top-wrap">
-        <input class="movie-search" value="окно поиска" [(ngModel)]="search">
+        <!-- <input class="movie-search" value="окно поиска" [(ngModel)]="search" (keyup.enter)="getSearchMovie(search)"> -->
+        <app-search></app-search>
     </div>
     <div class="movie-list-box">
-        <!-- to do movie-list-wrap -->
         <ul class="movie-list">
             <!-- todo implement using get/search/movie-->
-            <li class="movie-card" [routerLink]="['/info', movie.id]" *ngFor="let movie of movies | search:search">
+            <li class="movie-card" [routerLink]="['/info', movie.id]" *ngFor="let movie of movies">
                 <div>
                     <app-card [movie]="movie" [objGenres]="objGenres"></app-card>
                 </div>

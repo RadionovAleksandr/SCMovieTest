@@ -25,6 +25,7 @@ export class MovieListComponent implements OnInit {
         this.movieService.getMovies(page)
             .subscribe(movies => {
                 this.movies = movies.results;
+                // this.movieService.movies = movies.results;
                 localStorage.setItem('page', page);
             });
     }

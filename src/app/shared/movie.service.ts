@@ -1,7 +1,6 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
-
 export interface Movie {
     popularity: number;
     vote_count: number;
@@ -20,7 +19,6 @@ export interface Movie {
     genres: [string];
     bookmark: boolean;
 }
-
 
 export interface ResponceMovieNow {
     results: Movie[];
@@ -57,7 +55,7 @@ export class MovieService {
 
     getMovies(page): Observable<ResponceMovieNow> {
         return this.http.get<ResponceMovieNow>
-        (`https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb&language=en-US&page=${page}`);
+            (`https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb&language=en-US&page=${page}`);
     }
 
     getBookmarks(id): Observable<Movie> {
@@ -66,6 +64,11 @@ export class MovieService {
 
     getGenre(): Observable<ResponceGenre> {
         return this.http.get<ResponceGenre>('https://api.themoviedb.org/3/genre/movie/list?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
+    }
+
+    getSearchMovie(search: string): Observable<ResponceMovieNow> {
+        return this.http.get<ResponceMovieNow>
+        (`https://api.themoviedb.org/3/search/movie?api_key=07223f1ae4f3155a8e7eadc55a5431eb&query=${search}`);
     }
 
     // this method save object movie and save propherty id object movie
@@ -106,7 +109,7 @@ export class MovieService {
 
     getMoviesSimilar(movieID: number): Observable<MovieSimiral> {
         return this.http.get<MovieSimiral>('https://api.themoviedb.org/3/movie/' + movieID +
-        '/similar?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
+            '/similar?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
     }
 }
 
