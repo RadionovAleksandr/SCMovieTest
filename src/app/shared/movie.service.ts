@@ -1,6 +1,6 @@
-import { Injectable, OnInit } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 import { map } from 'rxjs/operators';
 export interface Movie {
     popularity: number;
@@ -47,11 +47,7 @@ const API_URL = 'https://api.themoviedb.org/3';
 })
 
 export class MovieService {
-    movies: Movie[];
     genres: Genre[] = [];
-    movieBookmarks: Movie[] = [];
-    movieBookmarksId: number[] = [];
-    arrId;
 
     constructor(private http: HttpClient) {
         this.getGenre()
@@ -72,8 +68,18 @@ export class MovieService {
             }));
     }
 
-    getBookmarks(id): Observable<Movie> {
-        return this.http.get<Movie>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
+    getBookmarks(): Observable<Movie[]> {
+        let moviesBookmarks;
+        try {
+            moviesBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+        } catch (error) {
+            moviesBookmarks = [];
+        }
+
+        const request = moviesBookmarks.map(id => {
+            return this.http.get<Movie>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
+        });
+        return forkJoin(request) as Observable<Movie[]>;
     }
 
     getGenre(): Observable<ResponceGenre> {
@@ -92,31 +98,29 @@ export class MovieService {
     }
 
     // this method save object movie and save propherty id object movie
-    addBookmarks(movie) {
-        if (this.movieBookmarksId.includes(movie.id) === false) {
-            this.movieBookmarksId.push(movie.id);
-            localStorage.setItem('bookmarks', this.movieBookmarksId.join());
-            this.movieBookmarks.push(movie);
+    addBookmark(movie) {
+        let moviesBookmarks;
+        try {
+            moviesBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+        } catch (error) {
+            moviesBookmarks = [];
+        }
+
+        if (moviesBookmarks.includes(movie.id) === false) {
+            moviesBookmarks.push(movie.id);
+            localStorage.setItem('bookmarks', JSON.stringify(moviesBookmarks));
         }
     }
 
-    delBookmarks(movie) {
-        movie.bookmark = false;
-        this.arrId = (localStorage.getItem('bookmarks')).split(',');
-        for (let i = 0; i < this.movieBookmarksId.length; i++) {
-            if (this.movieBookmarks[i]) {
-                if (this.movieBookmarks[i].id === movie.id) {
-                    this.movieBookmarks.splice(i, 1);
-                }
-            }
-            if (this.arrId[i] === movie.id) {
-                this.arrId.splice(i, 1);
-                i--;
-            }
+    removeBookmark(movie) {
+        let moviesBookmarks;
+        try {
+            moviesBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+        } catch (error) {
+            moviesBookmarks = [];
         }
-        this.movieBookmarksId = this.arrId;
-        localStorage.clear();
-        localStorage.setItem('bookmarks', this.arrId);
+        moviesBookmarks = moviesBookmarks.filter(item => item !== movie.id);
+        localStorage.setItem('bookmarks', JSON.stringify(moviesBookmarks));
     }
 
     getMoviesDetails(id: number): Observable<void> {
