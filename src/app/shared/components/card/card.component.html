@@ -12,8 +12,8 @@
     </div>
     <div class="genre-wrap"></div>
     <div class="genre-wrap-item">
-        <!-- <div class="genre-item" *ngFor="let id of movie.genre_ids">
-        {{objGenres[id]}}
-    </div> -->
+        <div class="genre-item" *ngFor="let genre of movie.genres">
+            {{genre.name}}
+        </div>
     </div>
 </div>

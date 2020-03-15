@@ -21,13 +21,12 @@ export class NgbdPaginationComponent {
 
     page = 4;
 
-    getPage(pageChange) {
-        this.movieService.getMovies(pageChange)
-        .subscribe((movies) => {
-            console.log(movies);
-            this.movieListComponent.movies = movies.results;
-            this.movieService.setLocal(pageChange);
-            // localStorage.setItem('page', pageChange);
-        });
-    }
+        // getPage(pageChange) {
+        //     this.movieService.getMovies(pageChange)
+        //     .subscribe((movies) => {
+        //         console.log(movies);
+        //         this.movieListComponent.movies = movies.results;
+        //         // localStorage.setItem('page', pageChange);
+        //     });
+        // }
 }

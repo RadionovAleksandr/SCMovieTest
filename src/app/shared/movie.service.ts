@@ -1,22 +1,23 @@
 import { Injectable, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, Subject, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 export interface Movie {
     popularity: number;
     vote_count: number;
-    video?: boolean;
+    video: boolean;
     poster_path: string;
     id: number;
-    adult?: false;
+    adult: false;
     backdrop_path: string;
-    original_language?: string;
-    original_title?: string;
-    genre_ids: [number];
+    original_language: string;
+    original_title: string;
     title: string;
     vote_average: number;
     overview: string;
     release_date: void;  // hz object date ?
-    genres: [string];
+    genre_ids: number[];
+    genres?: Genre[];
     bookmark: boolean;
 }
 
@@ -39,36 +40,49 @@ export interface MovieSimiral {
     total_results: number;
 }
 
+const API_KEY = '07223f1ae4f3155a8e7eadc55a5431eb';
+const API_URL = 'https://api.themoviedb.org/3';
 @Injectable({
     providedIn: 'root'
 })
 
 export class MovieService {
     movies: Movie[];
-    objGenres = {};
-
+    genres: Genre[] = [];
     movieBookmarks: Movie[] = [];
     movieBookmarksId: number[] = [];
     arrId;
-    api_key = '07223f1ae4f3155a8e7eadc55a5431eb';
-    constructor(private http: HttpClient) { }
 
-    getMovies(page = 1): Observable<ResponceMovieNow> {
+    constructor(private http: HttpClient) {
+        this.getGenre()
+            .subscribe(res => {
+                console.log(res);
+                this.genres = res.genres;
+            });
+    }
+
+    getMovies(page = 1): Observable<Movie[]> {
         return this.http.get<ResponceMovieNow>
-            (`https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb&language=en-US&page=${page}`);
+            (`${API_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`)
+            .pipe(map(res => {
+                return res.results.map(movie => {
+                    movie.genres = movie.genre_ids.map(id => this.genres.find(g => g.id === id));
+                    return movie;
+                });
+            }));
     }
 
     getBookmarks(id): Observable<Movie> {
-        return this.http.get<Movie>(`https://api.themoviedb.org/3/movie/${{id}}?api_key=07223f1ae4f3155a8e7eadc55a5431eb`);
+        return this.http.get<Movie>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
     }
 
     getGenre(): Observable<ResponceGenre> {
-        return this.http.get<ResponceGenre>(`https://api.themoviedb.org/3/genre/movie/list?api_key=07223f1ae4f3155a8e7eadc55a5431eb`);
+        return this.http.get<ResponceGenre>(`${API_URL}/genre/movie/list?api_key=${API_KEY}`);
     }
 
     getSearchMovie(search: string): Observable<ResponceMovieNow> {
         return this.http.get<ResponceMovieNow>
-        (`https://api.themoviedb.org/3/search/movie?api_key=07223f1ae4f3155a8e7eadc55a5431eb&query=${search}`);
+            (`${API_URL}/search/movie?api_key=${API_KEY}&query=${search}`);
     }
 
     // this method save object movie and save propherty id object movie
@@ -98,27 +112,13 @@ export class MovieService {
         localStorage.clear();
         localStorage.setItem('bookmarks', this.arrId);
     }
-    /*
-    todo implement localStorage using
-    https://developers.themoviedb.org/4/list/create-list
-    */
 
     getMoviesDetails(id: number): Observable<void> {
-        return this.http.get<void>(`https://api.themoviedb.org/3/movie/${{id}}?api_07223f1ae4f3155a8e7eadc55a5431eb`);
+        return this.http.get<void>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
     }
 
     getMoviesSimilar(movieID: number): Observable<MovieSimiral> {
-        return this.http.get<MovieSimiral>('https://api.themoviedb.org/3/movie/' + movieID +
-            '/similar?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
-    }
-
-    getlocal() {
-        return localStorage;
-    }
-
-    setLocal(page) {
-        localStorage.setItem("page", page);
-        console.log(localStorage);
+        return this.http.get<MovieSimiral>(`${API_URL}/movie/${movieID}/similar?api_key=${API_KEY}`);
     }
 }
 

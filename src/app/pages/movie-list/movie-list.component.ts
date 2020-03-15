@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService, Movie, Genre } from '../../shared/movie.service';
-import { SearchComponent } from 'src/app/shared/components/search/search.component';
 
 @Component({
     selector: 'app-movie-list',
@@ -22,8 +21,8 @@ export class MovieListComponent implements OnInit {
     getMovies() {
         this.movieService.getMovies()
             .subscribe(movies => {
-                this.movies = [...movies.results];
-                this.initialList = [...movies.results];
+                this.movies = [...movies];
+                this.initialList = [...movies];
             });
     }
 
@@ -39,13 +38,6 @@ export class MovieListComponent implements OnInit {
     }
 
     ngOnInit() {
-        // this.movieService.getGenre()
-        //     .subscribe(res => {
-        //         this.genres = res.genres;
-        //         this.genres.forEach(genre => {
-        //             this.movieService.objGenres[genre.id] = genre.name;
-        //         });
-        //     });
         this.getMovies();
     }
 }
