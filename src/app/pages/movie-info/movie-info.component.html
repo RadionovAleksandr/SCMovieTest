@@ -24,21 +24,8 @@
                 {{genre.name}}
             </div>
         </div>
-
     </div>
-
-    <!-- <div class="similar-box" *ngIf="[isViewSimilar]; else elseTemplate"> -->
     <div class="similar-box">
-        <div class="similar-item" *ngFor="let similar of moviesSImilar">
-            <div>{{similar.title}}</div>
-            <div>{{similar.vote_average}}</div>
-            <div>{{similar.release_date}}</div>
-            <img src="https://image.tmdb.org/t/p/w200{{similar.backdrop_path}}">
-        </div>
+        <app-card *ngFor="let movie of moviesSimilar" [routerLink]="['/info', movie.id]" [movie]="movie"></app-card>
     </div>
-    <!-- </div> -->
-
-    <!-- <ng-template #elseTemplate>
-        <b>Этот филь пока не обзавелся списком похожих фильмов</b>
-    </ng-template> -->
 </section>

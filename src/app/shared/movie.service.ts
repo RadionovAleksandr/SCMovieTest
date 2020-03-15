@@ -21,7 +21,7 @@ export interface Movie {
     bookmark: boolean;
 }
 
-export interface ResponceMovieNow {
+export interface ResponseMovie {
     results: Movie[];
     total_pages: number;
     total_results: number;
@@ -31,13 +31,8 @@ export interface Genre {
     id: number;
     name: string;
 }
-export interface ResponceGenre {
+export interface ResponseGenre {
     genres: Genre[];
-}
-
-export interface MovieSimiral {
-    results: void[];
-    total_results: number;
 }
 
 const API_KEY = '07223f1ae4f3155a8e7eadc55a5431eb';
@@ -58,7 +53,7 @@ export class MovieService {
     }
 
     getMovies(page = 1): Observable<Movie[]> {
-        return this.http.get<ResponceMovieNow>
+        return this.http.get<ResponseMovie>
             (`${API_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`)
             .pipe(map(res => {
                 return res.results.map(movie => {
@@ -82,12 +77,12 @@ export class MovieService {
         return forkJoin(request) as Observable<Movie[]>;
     }
 
-    getGenre(): Observable<ResponceGenre> {
-        return this.http.get<ResponceGenre>(`${API_URL}/genre/movie/list?api_key=${API_KEY}`);
+    getGenre(): Observable<ResponseGenre> {
+        return this.http.get<ResponseGenre>(`${API_URL}/genre/movie/list?api_key=${API_KEY}`);
     }
 
     getSearchMovie(search: string): Observable<Movie[]> {
-        return this.http.get<ResponceMovieNow>
+        return this.http.get<ResponseMovie>
             (`${API_URL}/search/movie?api_key=${API_KEY}&query=${search}`)
             .pipe(map(res => {
                 return res.results.map(movie => {
@@ -127,8 +122,14 @@ export class MovieService {
         return this.http.get<void>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
     }
 
-    getMoviesSimilar(movieID: number): Observable<MovieSimiral> {
-        return this.http.get<MovieSimiral>(`${API_URL}/movie/${movieID}/similar?api_key=${API_KEY}`);
+    getSimilar(movieID: number): Observable<Movie[]> {
+        return this.http.get<ResponseMovie>(`${API_URL}/movie/${movieID}/similar?api_key=${API_KEY}`)
+            .pipe(map(res => {
+                return res.results.map(movie => {
+                    movie.genres = movie.genre_ids.map(id => this.genres.find(g => g.id === id));
+                    return movie;
+                });
+            }));
     }
 }
 

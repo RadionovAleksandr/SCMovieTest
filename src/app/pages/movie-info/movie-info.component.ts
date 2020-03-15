@@ -11,8 +11,8 @@ import { MovieService } from '../../shared/movie.service';
 
 export class MovieInfoComponent implements OnInit {
 
-    movie;//: void;
-    moviesSImilar;
+    movie;
+    moviesSimilar;
     bookmarks: Movie[] = [];
 
     constructor(
@@ -21,8 +21,6 @@ export class MovieInfoComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.moviesSImilar = true;
-
         this.route.params
             .subscribe((params: Params) => {
                 this.movieService.getMoviesDetails(params.id)
@@ -30,15 +28,9 @@ export class MovieInfoComponent implements OnInit {
                         this.movie = movie;
                     });
 
-                this.movieService.getMoviesSimilar(params.id)
+                this.movieService.getSimilar(params.id)
                     .subscribe(movies => {
-                        if (movies.total_results !== 0) {
-                            this.moviesSImilar = movies.results;
-                            // this.isViewSimilar = true;
-                        } else {
-                            console.log(222222);
-                            // this.isViewSimilar = false;
-                        }
+                        this.moviesSimilar = movies;
                     });
             });
     }
