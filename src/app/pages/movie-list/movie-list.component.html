@@ -1,7 +1,7 @@
 <section class="movie">
     <div class="movie-top-wrap">
         <!-- <input class="movie-search" value="окно поиска" [(ngModel)]="search" (keyup.enter)="getSearchMovie(search)"> -->
-        <app-search></app-search>
+        <app-search (onChange)="onSearch($event)"></app-search>
     </div>
     <div class="movie-list-box">
         <ul class="movie-list">

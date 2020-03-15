@@ -50,7 +50,7 @@ export class MovieService {
     movieBookmarks: Movie[] = [];
     movieBookmarksId: number[] = [];
     arrId;
-
+    api_key = '07223f1ae4f3155a8e7eadc55a5431eb';
     constructor(private http: HttpClient) { }
 
     getMovies(page): Observable<ResponceMovieNow> {
@@ -59,11 +59,11 @@ export class MovieService {
     }
 
     getBookmarks(id): Observable<Movie> {
-        return this.http.get<Movie>('https://api.themoviedb.org/3/movie/' + id + '?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
+        return this.http.get<Movie>(`https://api.themoviedb.org/3/movie/${{id}}?api_key=07223f1ae4f3155a8e7eadc55a5431eb`);
     }
 
     getGenre(): Observable<ResponceGenre> {
-        return this.http.get<ResponceGenre>('https://api.themoviedb.org/3/genre/movie/list?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
+        return this.http.get<ResponceGenre>(`https://api.themoviedb.org/3/genre/movie/list?api_key=07223f1ae4f3155a8e7eadc55a5431eb`);
     }
 
     getSearchMovie(search: string): Observable<ResponceMovieNow> {
@@ -104,7 +104,7 @@ export class MovieService {
     */
 
     getMoviesDetails(id: number): Observable<void> {
-        return this.http.get<void>('https://api.themoviedb.org/3/movie/' + id + '?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
+        return this.http.get<void>(`https://api.themoviedb.org/3/movie/${{id}}?api_07223f1ae4f3155a8e7eadc55a5431eb`);
     }
 
     getMoviesSimilar(movieID: number): Observable<MovieSimiral> {
@@ -112,13 +112,13 @@ export class MovieService {
             '/similar?api_key=07223f1ae4f3155a8e7eadc55a5431eb');
     }
 
-    getlocal(){
+    getlocal() {
         return localStorage;
     }
 
     setLocal(page) {
         localStorage.setItem("page", page);
-        console.log(localStorage)
+        console.log(localStorage);
     }
 }
 

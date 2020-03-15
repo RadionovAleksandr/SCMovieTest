@@ -21,7 +21,7 @@ import { SearchComponent } from './shared/components/search/search.component';
     MovieListComponent,
     SearchPipe,
     CardComponent,
-    SearchComponent
+    SearchComponent,
   ],
   imports: [
     BrowserModule,

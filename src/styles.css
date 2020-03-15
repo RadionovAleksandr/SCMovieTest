@@ -58,7 +58,7 @@ main {
     display: flex;
 }
 
-.movie-search {
+.search {
     width: 60%;
     margin: 0 auto;
     padding: 20px 30px;
@@ -70,8 +70,8 @@ main {
     /* background-color: indianred; */
 }
 
-.movie-search:focus,
-.movie-search:hover {
+.search:focus,
+.search:hover {
     border: 1px solid indianred;
 }
 

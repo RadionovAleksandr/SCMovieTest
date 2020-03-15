@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MovieService, Movie, Genre } from '../../shared/movie.service';
+import { SearchComponent } from 'src/app/shared/components/search/search.component';
 
 @Component({
     selector: 'app-movie-list',
@@ -19,15 +20,29 @@ export class MovieListComponent implements OnInit {
     page: number;
     objGenres = this.movieService.objGenres;
     local;
-    constructor(private movieService: MovieService) { }
+    constructor(
+        private movieService: MovieService,
+        // private searchComponent: SearchComponent
+    ) { }
 
     getMovies(page) {
-        // if(localStorage.getItem(search))  check  loaclstorage
+        // if (this.searchComponent.searchString === null && this.searchComponent.inputValue === 'окно поиска') {
         this.movieService.getMovies(page)
             .subscribe(movies => {
                 this.movies = movies.results;
                 this.movieService.setLocal(page);
                 // localStorage.setItem('page', page);
+            });
+        // } else {
+        //     this.getSearchMovie(this.searchComponent.inputValue)
+        // }
+    }
+
+    onSearch(evt) {
+        console.log(evt);
+        this.movieService.getSearchMovie(evt)
+            .subscribe(movies => {
+                this.movies = movies.results;
             });
     }
 

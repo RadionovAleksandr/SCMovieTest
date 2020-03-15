@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { MovieService } from '../../movie.service';
 import { MovieListComponent } from 'src/app/pages/movie-list/movie-list.component';
 
@@ -7,25 +7,13 @@ import { MovieListComponent } from 'src/app/pages/movie-list/movie-list.componen
     templateUrl: './search.component.html',
     // styleUrls: ['./search.component.css']
 })
-export class SearchComponent implements OnInit {
-    @Input() search: string;
-    inputValue: string = "окно поиска";
-    constructor(
-        private movieService: MovieService,
-        private movieListComponent: MovieListComponent
-    ) { }
+export class SearchComponent {
+    searchString: string = "";
+    @Output() onChange = new EventEmitter();
 
-    getSearchMovie(str) {
-        this.movieService.getSearchMovie(str)
-            .subscribe(movies => {
-                this.movieListComponent.movies = movies.results;
-            });
-            localStorage.set('search', str);
+    constructor() { }
+
+    onSearch() {
+        this.onChange.emit(this.searchString); // стреляем событием
     }
-
-    focus() {
-        this.inputValue = null;
-    }
-
-    ngOnInit(): void { }
 }
