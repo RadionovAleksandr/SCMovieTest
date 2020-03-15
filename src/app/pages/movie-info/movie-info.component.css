@@ -1,0 +1,62 @@
+.info-movies {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie-card--big {
+    /* margin: 20px 30px; */
+    /* margin: auto; */
+}
+
+.movie-card--big img {
+    padding-right: 40px;
+}
+
+.info-movies-wrap {
+    width: 40%;
+    padding: 0 10px;
+}
+
+.btn--add-bookmarks {
+    float: right;
+}
+
+.text-movie {
+    padding: 10px 0 5px 0;
+}
+
+.genres-wrap {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.genre-item {
+    padding: 10px 10px;
+    /* background-color: indianred; */
+    background-color: rgb(168, 120, 230);
+}
+
+.similar-box {
+    margin: auto;
+    margin-top: 80px;
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.similar-item {
+    padding: 20px 0px;
+}
+
+.rating {
+    color: rgb(73, 199, 38);
+    font-size: 30px;
+}
+
+.text {
+    padding: 5px 10px 5px 0;
+    width: auto;
+}
+
+.statistics-movie {}

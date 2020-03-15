@@ -80,9 +80,15 @@ export class MovieService {
         return this.http.get<ResponceGenre>(`${API_URL}/genre/movie/list?api_key=${API_KEY}`);
     }
 
-    getSearchMovie(search: string): Observable<ResponceMovieNow> {
+    getSearchMovie(search: string): Observable<Movie[]> {
         return this.http.get<ResponceMovieNow>
-            (`${API_URL}/search/movie?api_key=${API_KEY}&query=${search}`);
+            (`${API_URL}/search/movie?api_key=${API_KEY}&query=${search}`)
+            .pipe(map(res => {
+                return res.results.map(movie => {
+                    movie.genres = movie.genre_ids.map(id => this.genres.find(g => g.id === id));
+                    return movie;
+                });
+            }));
     }
 
     // this method save object movie and save propherty id object movie

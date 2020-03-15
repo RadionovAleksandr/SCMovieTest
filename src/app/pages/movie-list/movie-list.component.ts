@@ -33,7 +33,7 @@ export class MovieListComponent implements OnInit {
         }
         this.movieService.getSearchMovie(str)
             .subscribe(movies => {
-                this.movies = movies.results;
+                this.movies = movies;
             });
     }
 

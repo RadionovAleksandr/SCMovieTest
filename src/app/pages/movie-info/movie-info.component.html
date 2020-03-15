@@ -1,5 +1,3 @@
-<p>movie-info works!</p>
-
 <div class="statistics-movie">
 
 </div>
@@ -11,19 +9,22 @@
 
     <div class="info-movies-wrap">
 
-        <b class="title-movie">{{movie?.title}}</b>
-        <button class="btn btn--bookmarks btn--green" (click)="addBookmarks(movie)">add bookmarks</button>
+        <b class="title-movie">{{movie?.title}} <span class="rating">{{movie?.vote_average}}</span></b>
+        <button class="btn btn--add-bookmarks btn--green" (click)="addBookmarks(movie)">add bookmarks</button>
         <div class="text-movie">{{movie?.overview}}</div>
-        <div class="budget">Budget {{movie?.budget}}</div>
-        <div class="popularity">Views{{movie?.popularity}}</div>
-        <div class="vote-average">Release_date{{movie?.release_date}}</div>
-        <div class="popularity">Vote count{{movie?.vote_count}}</div>
-        <div class="vote-average">Viewers rating{{movie?.vote_average}}</div>
-        <div class="genres-wrap"><b>Genre:</b>{{movie?.genre_ids}}
-            <div class="genres" *ngFor="let genre of movie?.genres">
-                <div class="genres">{{genre.name}}</div>
+        <div class="statistics-movie">
+            <div class="text budget"><b>Budget: </b> {{movie?.budget}}</div>
+            <div class="text views"><b>Views: </b>{{movie?.popularity}}</div>
+            <div class="text vote-average"><b>Release_date: </b>{{movie?.release_date}}</div>
+            <div class="text popularity"><b>Vote count: </b>{{movie?.vote_count}}</div>
+            <!-- <div class="text vote-average"><b>Viewers rating: </b>{{movie?.vote_average}}</div> -->
+        </div>
+        <div class="genres-wrap">
+            <div class="genre-item" *ngFor="let genre of movie?.genres">
+                {{genre.name}}
             </div>
         </div>
+
     </div>
 
     <!-- <div class="similar-box" *ngIf="[isViewSimilar]; else elseTemplate"> -->
