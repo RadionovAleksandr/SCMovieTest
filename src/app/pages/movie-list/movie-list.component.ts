@@ -8,62 +8,44 @@ import { SearchComponent } from 'src/app/shared/components/search/search.compone
     styleUrls: ['./movie-list.component.css']
 })
 export class MovieListComponent implements OnInit {
-
-    search: string;
     movies: Movie[];
-    // countPages: number[];
     genres: Genre[];
-    // pages = [];
     countPages: number;
     pageSize: number;
     totalResults: number;
+    initialList: Movie[];
     page: number;
-    objGenres = this.movieService.objGenres;
-    local;
     constructor(
         private movieService: MovieService,
-        // private searchComponent: SearchComponent
     ) { }
 
-    getMovies(page) {
-        // if (this.searchComponent.searchString === null && this.searchComponent.inputValue === 'окно поиска') {
-        this.movieService.getMovies(page)
+    getMovies() {
+        this.movieService.getMovies()
             .subscribe(movies => {
-                this.movies = movies.results;
-                this.movieService.setLocal(page);
-                // localStorage.setItem('page', page);
+                this.movies = [...movies.results];
+                this.initialList = [...movies.results];
             });
-        // } else {
-        //     this.getSearchMovie(this.searchComponent.inputValue)
-        // }
     }
 
-    onSearch(evt) {
-        console.log(evt);
-        this.movieService.getSearchMovie(evt)
+    onSearch(str) {
+        if (!str) {
+            this.movies = this.initialList;
+            return;
+        }
+        this.movieService.getSearchMovie(str)
             .subscribe(movies => {
                 this.movies = movies.results;
             });
     }
 
     ngOnInit() {
-        // this.local = localStorage;
-        this.local = this.movieService.getlocal();
-        this.movieService.getGenre()
-            .subscribe(res => {
-                this.genres = res.genres;
-                this.genres.forEach(genre => {
-                    this.movieService.objGenres[genre.id] = genre.name;
-                });
-            });
-        localStorage.getItem('page') ? this.page = Number(localStorage.getItem('page')) : this.page = 1;
-
-        this.movieService.getMovies(this.page)
-            .subscribe(movies => {
-                this.movies = movies.results;
-                this.totalResults = movies.total_results;
-                this.countPages = movies.total_pages;
-                this.pageSize = movies.results.length;
-            });
+        // this.movieService.getGenre()
+        //     .subscribe(res => {
+        //         this.genres = res.genres;
+        //         this.genres.forEach(genre => {
+        //             this.movieService.objGenres[genre.id] = genre.name;
+        //         });
+        //     });
+        this.getMovies();
     }
 }

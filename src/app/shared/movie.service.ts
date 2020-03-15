@@ -53,7 +53,7 @@ export class MovieService {
     api_key = '07223f1ae4f3155a8e7eadc55a5431eb';
     constructor(private http: HttpClient) { }
 
-    getMovies(page): Observable<ResponceMovieNow> {
+    getMovies(page = 1): Observable<ResponceMovieNow> {
         return this.http.get<ResponceMovieNow>
             (`https://api.themoviedb.org/3/movie/now_playing?api_key=07223f1ae4f3155a8e7eadc55a5431eb&language=en-US&page=${page}`);
     }

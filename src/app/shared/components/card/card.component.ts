@@ -4,6 +4,7 @@ import { Movie } from '../../movie.service';
 @Component({
     selector: 'app-card',
     templateUrl: './card.component.html',
+    styleUrls: ['./card.component.css'],
 })
 
 

@@ -1,0 +1,16 @@
+.search {
+    width: 60%;
+    margin: 0 auto;
+    padding: 20px 30px;
+    background-color: rgb(168, 120, 230);
+    opacity: 0.6;
+    border-radius: 3px;
+    border: 1px solid transparent;
+    font-size: 26px;
+    /* background-color: indianred; */
+}
+
+.search:focus,
+.search:hover {
+    border: 1px solid indianred;
+}
