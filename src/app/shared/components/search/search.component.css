@@ -1,13 +1,18 @@
 .search {
+    font-size: 18px;
     width: 60%;
     margin: 0 auto;
     padding: 20px 30px;
-    background-color: rgb(168, 120, 230);
-    opacity: 0.6;
+    background-color: #875EB7;
     border-radius: 3px;
     border: 1px solid transparent;
-    font-size: 26px;
-    /* background-color: indianred; */
+    color: rgba(255, 255, 255, 0.782);
+    display: block;
+}
+
+.search::placeholder {
+    color: rgba(255, 255, 255, 0.775);
+    opacity: 1;
 }
 
 .search:focus,

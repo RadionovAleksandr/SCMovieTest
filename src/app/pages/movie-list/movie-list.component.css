@@ -1,5 +1,14 @@
-.movie-list-box {
+.movie__list-box {
     display: flex;
     flex-wrap: wrap;
+    margin-top: 20px;
     justify-content: space-between;
+}
+
+.movie__search-wrap {
+    display: flex;
+}
+
+.movie__card {
+    margin: 0 10px;
 }

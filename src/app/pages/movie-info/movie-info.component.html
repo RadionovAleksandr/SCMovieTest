@@ -1,31 +1,26 @@
-<div class="statistics-movie">
-
-</div>
-
-<section class="info-movies">
+<section class="info-movie">
     <div class="card-movie movie-card--big">
-        <img class="r" src="https://image.tmdb.org/t/p/w500{{movie?.backdrop_path}}" alt="Постер">
+        <img src="https://image.tmdb.org/t/p/w500{{movie?.backdrop_path}}" alt="Постер">
+        <b class="card__title"><a href="{{movie?.homepage}}" target="_blank">{{movie?.title}}</a></b>
+        <div class="card__text">{{movie?.overview}}</div>
     </div>
 
-    <div class="info-movies-wrap">
-
-        <b class="title-movie">{{movie?.title}} <span class="rating">{{movie?.vote_average}}</span></b>
-        <button class="btn btn--add-bookmarks btn--green" (click)="addBookmarks(movie)">add bookmarks</button>
-        <div class="text-movie">{{movie?.overview}}</div>
-        <div class="statistics-movie">
-            <div class="text budget"><b>Budget: </b> {{movie?.budget}}</div>
-            <div class="text views"><b>Views: </b>{{movie?.popularity}}</div>
-            <div class="text vote-average"><b>Release_date: </b>{{movie?.release_date}}</div>
-            <div class="text popularity"><b>Vote count: </b>{{movie?.vote_count}}</div>
-            <!-- <div class="text vote-average"><b>Viewers rating: </b>{{movie?.vote_average}}</div> -->
+    <div class="info-movie__card">
+        <b><span class="card__rating">{{movie?.vote_average}}<sub class="card__small">{{movie?.vote_count}}</sub></span></b>
+        <button class="btn info-movie__btn" (click)="addBookmarks(movie)">add bookmarks</button>
+        <div class="card__statistics">
+            <div class="statistics__tagline card__text"><b>Tagline: </b> {{movie?.tagline}}</div>
+            <div class="statistics__budget card__text "><b>Budget: </b> {{movie?.budget}}</div>
+            <div class="statistics__views card__text"><b>Views: </b> {{movie?.popularity}}</div>
+            <div class="statistics__vote-average card__text"><b>Release date: </b> {{movie?.release_date}}</div>
         </div>
-        <div class="genres-wrap">
-            <div class="genre-item" *ngFor="let genre of movie?.genres">
+        <div class="card__genres">
+            <div class="card__genre-item" *ngFor="let genre of movie?.genres">
                 {{genre.name}}
             </div>
         </div>
     </div>
-    <div class="similar-box">
+    <div class="info-movie__similar">
         <app-card *ngFor="let movie of moviesSimilar" [routerLink]="['/info', movie.id]" [movie]="movie"></app-card>
     </div>
 </section>

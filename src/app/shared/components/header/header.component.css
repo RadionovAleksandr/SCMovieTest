@@ -1,0 +1,13 @@
+.header {
+    padding: 20px 30px;
+    display: flex;
+    max-width: 80%;
+    margin: 0 auto;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header__logo {
+    font-size: 44px;
+    font-family: 'Righteous', cursive;
+}

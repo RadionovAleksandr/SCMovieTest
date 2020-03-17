@@ -11,6 +11,7 @@ import { MovieListComponent } from './pages/movie-list/movie-list.component';
 import { NgbdPaginationModule } from './shared/components/pagination/pagination-component.module';
 import { CardComponent } from './shared/components/card/card.component';
 import { SearchComponent } from './shared/components/search/search.component';
+import { HeaderComponent } from './shared/components/header/header.component';
 
 @NgModule({
     declarations: [
@@ -20,6 +21,7 @@ import { SearchComponent } from './shared/components/search/search.component';
         MovieListComponent,
         CardComponent,
         SearchComponent,
+        HeaderComponent
     ],
     imports: [
         BrowserModule,

@@ -1,9 +1,9 @@
 <section class="movie">
-    <div class="movie-top-wrap">
-        <app-search (onChange)="onSearch($event)"></app-search>
+    <div class=".movie__search-wrap">
+        <app-search class="" (onChange)="onSearch($event)"></app-search>
     </div>
-    <div class="movie-list-box">
-        <app-card *ngFor="let movie of movies" [routerLink]="['/info', movie.id]" [movie]="movie"></app-card>
+    <div class="movie__list-box">
+        <app-card class="movie__card" *ngFor="let movie of movies" [routerLink]="['/info', movie.id]" [movie]="movie"></app-card>
     </div>
     <!-- <app-pagination [pageSize]="pageSize" [pages]="countPages" [totalResults]="totalResults"></app-pagination> -->
 </section>
