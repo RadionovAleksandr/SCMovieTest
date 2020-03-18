@@ -1,3 +1,13 @@
 .movie__card {
     margin: 0 10px;
 }
+
+.bookmarks-cards {
+    display: flex;
+}
+
+.btn--remove {
+    position: relative;
+    top: -30px;
+    right: 50px;
+}

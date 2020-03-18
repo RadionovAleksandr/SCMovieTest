@@ -3,7 +3,7 @@
         <app-search class="" (onChange)="onSearch($event)"></app-search>
     </div>
     <div class="movie__list-box">
-        <app-card class="movie__card" *ngFor="let movie of movies" [routerLink]="['/info', movie.id]" [movie]="movie"></app-card>
+        <app-card class="movie__card" *ngFor="let movie of movies" [movie]="movie"></app-card>
     </div>
     <!-- <app-pagination [pageSize]="pageSize" [pages]="countPages" [totalResults]="totalResults"></app-pagination> -->
 </section>

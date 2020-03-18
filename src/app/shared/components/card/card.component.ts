@@ -11,9 +11,10 @@ import { Movie } from '../../movie.service';
 export class CardComponent implements OnInit {
     @Input() movie: Movie;
     @Input() objGenres;
+    @Input() remove;
 
     local;
-    constructor() { }
+    constructor( ) { }
 
     ngOnInit(): void {
         this.local = localStorage;

@@ -1,5 +1,6 @@
-<section>
-    <div class="movie__list-box">
-        <app-card class="movie__card" *ngFor=" let movie of movies " [routerLink]="[ '/info', movie.id] " [movie]="movie "></app-card>
+<section class="bookmarks-cards">
+    <div class="bookmarks-card" *ngFor="let movie of movies">
+        <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        <button class="btn btn--remove" (click)="removeBookmark(movie)" *ngIf="movie">remove</button>
     </div>
 </section>
