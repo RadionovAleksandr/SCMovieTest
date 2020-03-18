@@ -19,7 +19,7 @@ export class MovieBookmarksComponent implements OnInit {
         this.movieService.getBookmarks()
         .subscribe(movies => {
             this.movies = movies;
-        })
+        });
     }
 
     removeBookmark(movie) {

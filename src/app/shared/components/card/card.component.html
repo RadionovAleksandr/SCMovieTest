@@ -1,18 +1,17 @@
-<div class="card-wrap">
-    <img class="card-poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" id="{{movie.id}}">
-    <div class="stars">
-        <!-- <div [ngClass]="{'star': local.bookmarks.includes(movie.id)}"></div> -->
+<div class="card">
+    <img class="card__poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" id="{{movie.id}}">
+    <div class="card__star-wrap">
+        <div [ngClass]="{'card__star': local.bookmarks.includes(movie.id)}"></div>
     </div>
-    <h3 class="text"><b>Title:</b> {{movie.title}}</h3>
-    <p class="text"><b>Overview:</b> {{movie.overview}}</p>
-    <p class="text"><b>Release date:</b> {{movie.release_date}}</p>
-    <div class="box">
-        <div class="text-column"><b>Viewers rating:</b> {{movie.vote_average}}</div>
-        <div class="text-column"><b>Vote count:</b>{{movie.vote_count}}</div>
+    <h3 class="card__text card__title">{{movie.title}}</h3>
+    <p class="card__text">{{movie.overview}}</p>
+    <p class="card__text">Release date: {{movie.release_date}}</p>
+    <div class="card__box">
+        <div class="card__text-column">Viewers rating: {{movie.vote_average}}</div>
+        <div class="card__text-column">Vote count: {{movie.vote_count}}</div>
     </div>
-    <div class="genre-wrap"></div>
-    <div class="genre-wrap-item">
-        <div class="genre-item" *ngFor="let genre of movie.genres">
+    <div class="card__genre-wrap">
+        <div class="card__genre-item genre-item" *ngFor="let genre of movie.genres">
             {{genre.name}}
         </div>
     </div>

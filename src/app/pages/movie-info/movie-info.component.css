@@ -14,6 +14,7 @@
 
 .card__title {
     display: flex;
+    font-size: 22px;
 }
 
 .card__title a {
@@ -21,7 +22,7 @@
 }
 
 .info-movie__card {
-    width: 43%;
+    width: 47%;
     /* padding: 0 10px; */
 }
 
@@ -29,12 +30,18 @@
     float: right;
 }
 
+.card__statistics {
+    max-width: 380px;
+}
+
 .card__text {
     padding: 10px 0 5px 0;
+    display: flex;
+    justify-content: space-between;
 }
 
 .card__small {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .card__genres {
@@ -44,22 +51,25 @@
 
 .card__genre-item {
     padding: 10px 10px;
-    /* background-color: indianred; */
-    background-color: rgb(168, 120, 230);
 }
 
 .info-movie__similar {
     margin: auto;
     margin-top: 80px;
-    width: 80%;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+}
+
+.statistics__column--left {
+    width: 40%;
+}
+
+.statistics__column--right {
+    width: 60%;
 }
 
 .card__rating {
     color: rgb(73, 199, 38);
     font-size: 30px;
 }
-
-.card__statistics {}

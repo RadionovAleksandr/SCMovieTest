@@ -1,12 +1,5 @@
 <section>
-    <div class="text-movie">Lorem, ipsum dolor.</div>
-    <div class="bookmarks-list-box">
-        <ul class="bookmarks-list" *ngFor="let movie of movies">
-            <li class="bookmarks-card">
-                <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" alt="Постер">
-                <div class="title">{{movie.title}}</div>
-                <button class="btn btn--remove" (click)="removeBookmark(movie)">delete</button>
-            </li>
-        </ul>
+    <div class="movie__list-box">
+        <app-card class="movie__card" *ngFor=" let movie of movies " [routerLink]="[ '/info', movie.id] " [movie]="movie "></app-card>
     </div>
 </section>

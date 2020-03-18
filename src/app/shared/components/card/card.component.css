@@ -1,42 +1,38 @@
-.card-wrap {
+.card {
     padding: 30px 0;
     width: 300px;
     flex-wrap: wrap;
     justify-content: space-around;
 }
 
-.movie-card {
-    height: auto;
-    margin: 20px 30px;
-}
-
-.box {
+.card__box {
     display: flex;
+    justify-content: space-between;
 }
 
-.text-column {
+.card__text-column {
     margin-right: 20px;
 }
 
-.genre-wrap-item {
+.card__title {
+    font-size: 20px;
+    font-weight: normal;
+}
+
+.card__genre-wrap {
     display: flex;
     flex-wrap: wrap;
+    padding: 10px 0;
 }
 
-.genre-item {
-    padding: 10px 10px;
-    /* background-color: indianred; */
-    background-color: rgb(168, 120, 230);
-}
-
-.stars {
+.card__star-wrap {
     text-align: center;
     position: relative;
     bottom: 60px;
     right: -120px;
 }
 
-.star {
+.card__star {
     display: inline-block;
     vertical-align: top;
     width: 40px;
@@ -44,7 +40,7 @@
     background: linear-gradient(to bottom, rgba(224, 194, 75, 1) 0%, rgba(207, 125, 0, 1) 100%);
 }
 
-.star:before {
+.card__star:before {
     content: '';
     /* position: absolute; */
     top: 1px;
@@ -55,17 +51,17 @@
     z-index: 1;
 }
 
-.star,
-.star:before {
+.card__star,
+.card__star:before {
     -webkit-clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
     clip-path: polygon(50% 0%, 66% 27%, 98% 35%, 76% 57%, 79% 91%, 50% 78%, 21% 91%, 24% 57%, 2% 35%, 32% 27%);
     /* box-shadow: 2px 2px 20px 2px rgba(0, 0, 0, 1); */
 }
 
-.star:hover {
+.card__star:hover {
     background: linear-gradient(to bottom, rgb(224, 187, 39) 0%, rgba(207, 125, 0, 1) 100%);
 }
 
-.star:hover:before {
+.card__star:hover:before {
     background: linear-gradient(to bottom, rgb(236, 189, 0) 0%, rgba(238, 164, 0, 1) 100%);
 }

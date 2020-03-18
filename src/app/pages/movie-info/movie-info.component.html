@@ -1,21 +1,29 @@
 <section class="info-movie">
     <div class="card-movie movie-card--big">
         <img src="https://image.tmdb.org/t/p/w500{{movie?.backdrop_path}}" alt="Постер">
-        <b class="card__title"><a href="{{movie?.homepage}}" target="_blank">{{movie?.title}}</a></b>
+        <a class="card__title" href="{{movie?.homepage}}" target="_blank">{{movie?.title}}</a>
         <div class="card__text">{{movie?.overview}}</div>
     </div>
 
     <div class="info-movie__card">
         <b><span class="card__rating">{{movie?.vote_average}}<sub class="card__small">{{movie?.vote_count}}</sub></span></b>
-        <button class="btn info-movie__btn" (click)="addBookmarks(movie)">add bookmarks</button>
+        <button class="btn info-movie__btn" *ngIf="!local.bookmarks.includes(movie?.id)" (click)="addBookmarks(movie)">add bookmarks</button>
         <div class="card__statistics">
-            <div class="statistics__tagline card__text"><b>Tagline: </b> {{movie?.tagline}}</div>
-            <div class="statistics__budget card__text "><b>Budget: </b> {{movie?.budget}}</div>
-            <div class="statistics__views card__text"><b>Views: </b> {{movie?.popularity}}</div>
-            <div class="statistics__vote-average card__text"><b>Release date: </b> {{movie?.release_date}}</div>
+            <div class="statistics__tagline card__text">
+                <span class="statistics__column statistics__column--left">Tagline: </span>
+                <span class="statistics__column statistics__column--right">{{movie?.tagline}}</span>
+            </div>
+            <div class="statistics__views card__text">
+                <span class="statistics__column statistics__column--left">Views: </span>
+                <span class="statistics__column statistics__column--right">{{movie?.popularity}}</span>
+            </div>
+            <div class="statistics__vote-average card__text">
+                <span class="statistics__column statistics__column--left">Release date:</span>
+                <span class="statistics__column statistics__column--right">{{movie?.release_date}}</span>
+            </div>
         </div>
         <div class="card__genres">
-            <div class="card__genre-item" *ngFor="let genre of movie?.genres">
+            <div class="card__genre-item genre-item" *ngFor="let genre of movie?.genres">
                 {{genre.name}}
             </div>
         </div>

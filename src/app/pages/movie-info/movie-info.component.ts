@@ -14,6 +14,7 @@ export class MovieInfoComponent implements OnInit {
     movie;
     moviesSimilar;
     bookmarks: Movie[] = [];
+    local;
 
     constructor(
         private route: ActivatedRoute,
@@ -33,6 +34,7 @@ export class MovieInfoComponent implements OnInit {
                         this.moviesSimilar = movies;
                     });
             });
+        this.local = localStorage;
     }
     addBookmarks(movie: Movie) {
         this.movieService.addBookmark(movie);

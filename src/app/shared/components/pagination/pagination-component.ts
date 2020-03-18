@@ -8,25 +8,28 @@ import { MovieListComponent } from 'src/app/pages/movie-list/movie-list.componen
 })
 
 export class NgbdPaginationComponent {
+    @Output() pageChange;
+
+    
     constructor(
         private movieService: MovieService,
         private movieListComponent: MovieListComponent
-        ) { }
-    @Input() pages: number;
-    @Input() pageSize: number;
-    @Input() totalResults: number;
-    @Output() pageChange;
-
+        ) {}
+    // @Input() pages: number;
+    // @Input() pageSize: number;
+    // @Input() totalResults: number;
+    pages = 20;
+    pageSize = 20;
+    totalResults = 1200;
+    page = 1;
     maxSize = 6;
 
-    page = 4;
-
-        // getPage(pageChange) {
-        //     this.movieService.getMovies(pageChange)
-        //     .subscribe((movies) => {
-        //         console.log(movies);
-        //         this.movieListComponent.movies = movies.results;
-        //         // localStorage.setItem('page', pageChange);
-        //     });
-        // }
+        getPage(pageChange) {
+            this.movieService.getMovies(pageChange)
+            .subscribe((movies) => {
+                console.log(movies);
+                this.movieListComponent.movies = movies;
+                // localStorage.setItem('page', pageChange);
+            });
+        }
 }
