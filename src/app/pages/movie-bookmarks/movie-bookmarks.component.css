@@ -1,13 +1,16 @@
-.movie__card {
-    margin: 0 10px;
+.bookmarks__card {
+    /* margin: 0 5px; */
+    width: 300px;
 }
 
-.bookmarks-cards {
+.bookmarks__cards {
     display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.btn--remove {
+.bookmarks__btn--remove {
     position: relative;
-    top: -30px;
-    right: 50px;
+    top: -50px;
+    right: 20px;
 }
