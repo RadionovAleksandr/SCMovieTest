@@ -1,5 +1,8 @@
 <div class="card">
-    <img class="card__poster" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" id="{{movie.id}}">
+    <img class="card__poster" *ngIf="movie.poster_path; else elseTemplate" src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" id="{{movie.id}}">
+    <ng-template #elseTemplate>
+        <img class="card__poster" src="http://placehold.it/300x450" />
+    </ng-template>
     <div class="card__star-wrap">
         <div [ngClass]="{'card__star': local.bookmarks.includes(movie.id)}"></div>
     </div>
