@@ -1,6 +1,9 @@
 <section class="bookmarks__cards">
     <div class="bookmarks__card" *ngFor="let movie of movies">
-        <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" *ngIf="movie.poster_path; else elseTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        <ng-template #elseTemplate>
+            <img class="card__poster" [routerLink]="['/info', movie.id]" src="http://placehold.it/300x450" />
+        </ng-template>
         <button class="btn bookmarks__btn--remove" (click)="removeBookmark(movie)" *ngIf="movie">remove</button>
     </div>
 </section>
