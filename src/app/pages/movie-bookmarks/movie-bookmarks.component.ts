@@ -4,7 +4,7 @@ import { Movie, MovieService } from '../../shared/movie.service';
 @Component({
     selector: 'app-movie-bookmarks',
     templateUrl: './movie-bookmarks.component.html',
-    styleUrls: ['./movie-bookmarks.component.css']
+    styleUrls: ['./movie-bookmarks.component.scss']
 })
 
 export class MovieBookmarksComponent implements OnInit {

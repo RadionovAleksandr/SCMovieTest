@@ -12,14 +12,12 @@
     top: 70px;
     left: 50%;
     margin-left: -200px;
-}
-
-.search::placeholder {
-    color: rgba(255, 255, 255, 0.775);
-    opacity: 1;
-}
-
-.search:focus,
-.search:hover {
-    border: 1px solid indianred;
+    &::placeholder {
+        color: rgba(255, 255, 255, 0.775);
+        opacity: 1;
+    }
+    &:hover,
+    &:focus {
+        border: 1px solid indianred;
+    }
 }

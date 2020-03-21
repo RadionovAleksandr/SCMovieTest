@@ -4,7 +4,8 @@ import { MovieListComponent } from 'src/app/pages/movie-list/movie-list.componen
 
 @Component({
     selector: 'app-pagination',
-    templateUrl: './pagination-component.html'
+    templateUrl: './pagination-component.html',
+    styleUrls: ['./pagination-component.scss']
 })
 
 export class NgbdPaginationComponent {

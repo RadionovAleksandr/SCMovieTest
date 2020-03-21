@@ -1,0 +1,15 @@
+.bookmarks {
+    &__card {
+        width: 300px;
+    }
+    &__cards {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+    }
+    &__btn--remove {
+        position: relative;
+        top: -50px;
+        right: 20px;
+    }
+}

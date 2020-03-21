@@ -1,6 +1,13 @@
 <section class="bookmarks__cards">
     <div class="bookmarks__card" *ngFor="let movie of movies">
-        <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" *ngIf="movie.poster_path; else elseTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        <picture>
+            <source type="image/webp " srcset="https://image.tmdb.org/t/p/w300{{movie.poster_path}} 1x, 
+            https://image.tmdb.org/t/p/w600{{movie.poster_path}} 2x" *ngIf="movie.poster_path; else elseTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+            <source srcset="https://image.tmdb.org/t/p/w300{{movie.poster_path}} 1x, 
+            https://image.tmdb.org/t/p/w600{{movie.poster_path}} 2x" *ngIf="movie.poster_path; else elseTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+
+            <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" *ngIf="movie.poster_path; else elseTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        </picture>
         <ng-template #elseTemplate>
             <img class="card__poster" [routerLink]="['/info', movie.id]" src="http://placehold.it/300x450" />
         </ng-template>

@@ -5,7 +5,7 @@ import { MovieListComponent } from 'src/app/pages/movie-list/movie-list.componen
 @Component({
     selector: 'app-search',
     templateUrl: './search.component.html',
-    styleUrls: ['./search.component.css']
+    styleUrls: ['./search.component.scss']
 })
 export class SearchComponent {
     searchString: string = "";
