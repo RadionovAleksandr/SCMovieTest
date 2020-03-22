@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { MovieBookmarksComponent } from './pages/movie-bookmarks/movie-bookmarks.component';
@@ -28,7 +29,8 @@ import { HeaderComponent } from './shared/components/header/header.component';
         FormsModule,
         AppRoutingModule,
         HttpClientModule,
-        NgbdPaginationModule
+        NgbdPaginationModule,
+        FontAwesomeModule
     ],
     providers: [],
     exports: [],

@@ -18,25 +18,23 @@
         flex-wrap: wrap;
         padding: 10px 0;
     }
-    &__btn-wrap {
-        text-align: center;
+    &__bookmark {
+        opacity: 0;
+        position: absolute;
+        top: 0;
+        right: 10px;
+        background-color: transparent;
+        border: none;
+        &-icon {
+            width: 40px;
+            color: yellow;
+        }
+    }
+    &:hover .card__bookmark {
+        opacity: 1;
+    }
+    &__poster-wrap {
         position: relative;
-        height: 0;
-        bottom: 60px;
-        right: -120px;
-    }
-    &__btn--d-none {
-        display: none;
-    }
-    &__btn {
-        display: inline-block;
-        vertical-align: top;
-    }
-    &:hover .card__btn {
-        opacity: 0.3;
-    }
-    &__btn:hover {
-        opacity: 1 !important;
     }
 }
 
