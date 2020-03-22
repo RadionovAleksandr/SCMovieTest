@@ -1,18 +1,18 @@
 .header {
-    padding: 20px 30px;
+    padding: 20px 0;
     display: flex;
     max-width: 80%;
     margin: 0 auto;
     justify-content: space-between;
     align-items: center;
-}
-
-.header__logo {
-    font-size: 44px;
-    font-family: 'Righteous', cursive;
-    margin-left: 10px;
-}
-
-.header__bookmarks {
-    margin-right: 10px;
+    &__bookmark-icon {
+        font-size: 40px;
+    }
+    &__logo {
+        font-size: 44px;
+        font-family: 'Righteous', cursive;
+    }
+    &__bookmarks {
+        margin-right: 10px;
+    }
 }
