@@ -16,19 +16,13 @@
         </button>
     </div>
     <h3 class="card__title title">{{ movie.title }}</h3>
-    <!-- <p class="card__text text">{{ movie.overview }}</p> -->
     <p class="card__text text">Release date: {{ movie.release_date }}</p>
-    <div class="card__box">
-        <div class="card__text-column text">
-            Viewers rating: {{ movie.vote_average }}
-        </div>
-        <div class="card__text-column text">
-            Vote count: {{ movie.vote_count }}
-        </div>
-    </div>
+    <p class="card__text text">Viewers rating: {{ movie.vote_average }}</p>
+    <p class="card__text text">Vote count: {{ movie.vote_count }}</p>
+
     <div class="card__genre-wrap">
         <div class="card__genre-item genre-item text" *ngFor="let genre of movie.genres">
-            {{ genre.name }}
+            {{genre.name}}
         </div>
     </div>
 </div>

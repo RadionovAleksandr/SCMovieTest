@@ -5,13 +5,10 @@
     border: 1px solid transparent;
     color: rgba(255, 255, 255, 0.782);
     display: block;
-    position: absolute;
     margin: 0 auto;
     padding: 13px 30px;
-    width: 30%;
-    top: 70px;
-    left: 50%;
-    margin-left: -12%;
+    margin-bottom: 40px;
+    width: 200%;
     &::placeholder {
         color: rgba(255, 255, 255, 0.775);
         opacity: 1;
