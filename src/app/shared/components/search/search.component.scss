@@ -1,17 +1,17 @@
 .search {
     font-size: 18px;
-    width: 30%;
-    margin: 0 auto;
-    padding: 13px 30px;
     background-color: #875EB7;
     border-radius: 3px;
     border: 1px solid transparent;
     color: rgba(255, 255, 255, 0.782);
     display: block;
     position: absolute;
+    margin: 0 auto;
+    padding: 13px 30px;
+    width: 30%;
     top: 70px;
     left: 50%;
-    margin-left: -200px;
+    margin-left: -12%;
     &::placeholder {
         color: rgba(255, 255, 255, 0.775);
         opacity: 1;
@@ -19,5 +19,14 @@
     &:hover,
     &:focus {
         border: 1px solid indianred;
+    }
+}
+
+@media only screen and (max-width: 850px) {
+    .search {
+        font-size: 12px;
+        top: 120px;
+        left: 0;
+        margin-left: 11%;
     }
 }

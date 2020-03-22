@@ -1,27 +1,30 @@
 <div class="card">
     <picture>
-        <source type="image/webp " srcset="https://image.tmdb.org/t/p/w300{{movie.poster_path}} 1x, 
-        https://image.tmdb.org/t/p/w600{{movie.poster_path}} 2x" *ngIf="movie.poster_path; else elseTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
-        <source srcset="https://image.tmdb.org/t/p/w300{{movie.poster_path}} 1x, 
-        https://image.tmdb.org/t/p/w600{{movie.poster_path}} 2x" *ngIf="movie.poster_path; else elseTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        <source media="(max-width: 1250px)" type="image/webp " srcset="https://image.tmdb.org/t/p/w200{{movie.poster_path}} 1x, 
+        https://image.tmdb.org/t/p/w400{{movie.poster_path}} 2x" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        <source media="(min-width: 1250px)" type="image/webp " srcset="https://image.tmdb.org/t/p/w300{{movie.poster_path}} 1x" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
 
-        <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" *ngIf="movie.poster_path; else elseTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        <source media="(max-width: 1250px)" srcset="https://image.tmdb.org/t/p/w200{{movie.poster_path}} 1x, 
+        https://image.tmdb.org/t/p/w400{{movie.poster_path}} 2x" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+        <source media="(min-width: 1250px)" srcset="https://image.tmdb.org/t/p/w300{{movie.poster_path}} 1x" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
+
+        <img src="https://image.tmdb.org/t/p/w300{{movie.poster_path}}" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="[ '/info', movie.id]" alt="Постер">
     </picture>
-    <ng-template #elseTemplate>
+    <ng-template #imgTemplate>
         <img class="card__poster" [routerLink]="['/info', movie.id]" src="http://placehold.it/300x450" />
     </ng-template>
-    <div class="card__star-wrap">
-        <div [ngClass]="{'card__star': local.bookmarks.includes(movie.id)}"></div>
+    <div class="card__btn-wrap">
+        <button class="card__btn--d-none" [ngClass]="{' card__btn btn': local.bookmarks?.includes(movie.id)}">bookmark</button>
     </div>
-    <h3 class="card__text card__title">{{movie.title}}</h3>
-    <p class="card__text">{{movie.overview}}</p>
-    <p class="card__text">Release date: {{movie.release_date}}</p>
+    <h3 class="card__title title">{{movie.title}}</h3>
+    <p class="card__text text">{{movie.overview}}</p>
+    <p class="card__text text">Release date: {{movie.release_date}}</p>
     <div class="card__box">
-        <div class="card__text-column">Viewers rating: {{movie.vote_average}}</div>
-        <div class="card__text-column">Vote count: {{movie.vote_count}}</div>
+        <div class="card__text-column text">Viewers rating: {{movie.vote_average}}</div>
+        <div class="card__text-column text">Vote count: {{movie.vote_count}}</div>
     </div>
     <div class="card__genre-wrap">
-        <div class="card__genre-item genre-item" *ngFor="let genre of movie.genres">
+        <div class="card__genre-item genre-item text" *ngFor="let genre of movie.genres">
             {{genre.name}}
         </div>
     </div>

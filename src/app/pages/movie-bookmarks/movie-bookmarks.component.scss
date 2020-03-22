@@ -1,6 +1,7 @@
 .bookmarks {
     &__card {
         width: 300px;
+        margin: 0 10px;
     }
     &__cards {
         display: flex;
@@ -9,7 +10,7 @@
     }
     &__btn--remove {
         position: relative;
-        top: -50px;
-        right: 20px;
+        top: -60px;
+        right: -80%;
     }
 }
