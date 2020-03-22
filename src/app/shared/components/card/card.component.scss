@@ -33,6 +33,10 @@
     &:hover .card__bookmark {
         opacity: 1;
     }
+    &__poster img {
+        width: 100%;
+        height: auto;
+    }
     &__poster-wrap {
         position: relative;
     }

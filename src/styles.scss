@@ -350,6 +350,10 @@ common styles
         color: rgba(255, 255, 255, 0.755);
     }
     
+    html * {
+        box-sizing: border-box;
+    }
+    
     body {
         width: 100%;
         white-space: pre-wrap;
@@ -400,18 +404,6 @@ common styles
         border: 0.5px solid transparent;
         color: rgba(255, 255, 255, 0.796);
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-    }
-    
-    .movie__list-box {
-        display: flex;
-        flex-wrap: wrap;
-        margin-top: 20px;
-        justify-content: space-between;
-    }
-    
-    .genre-item {
-        background-color: rgb(135, 98, 184);
-        padding: 10px 5px;
     }
     
     .btn--blue:focus {

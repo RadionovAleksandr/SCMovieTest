@@ -1,14 +1,14 @@
 <div class="card">
     <div class="card__poster-wrap">
-        <picture>
+        <picture class="card__poster">
             <source media="(max-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
-            <source media="(min-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(300, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
+            <source media="(min-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
             <source media="(max-width: 1250px)" [srcset]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
-            <source media="(min-width: 1250px)" [srcset]="getPosterSrc(300, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
-            <img [src]="getPosterSrc(300, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
+            <source media="(min-width: 1250px)" [srcset]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
+            <img [src]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
         </picture>
         <ng-template #imgTemplate>
-            <img class="card__poster" [routerLink]="['/info', movie.id]" src="http://placehold.it/300x450" />
+            <img [routerLink]="['/info', movie.id]" src="http://placehold.it/300x450" />
         </ng-template>
         <button class="card__bookmark" (click)="toggle()">
             <fa-icon *ngIf="!bookmarked"  class="card__bookmark-icon" [icon]="faBookmark" ></fa-icon>
@@ -16,7 +16,7 @@
         </button>
     </div>
     <h3 class="card__title title">{{ movie.title }}</h3>
-    <p class="card__text text">{{ movie.overview }}</p>
+    <!-- <p class="card__text text">{{ movie.overview }}</p> -->
     <p class="card__text text">Release date: {{ movie.release_date }}</p>
     <div class="card__box">
         <div class="card__text-column text">

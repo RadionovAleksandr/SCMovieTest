@@ -2,26 +2,9 @@
     &__search-wrap {
         display: flex;
     }
-    &__card {
-        margin: 0 10px;
-    }
-}
-
-@media only screen and (min-width: 1250px) {
-    .movie__card {
-        width: 300px;
-    }
-}
-
-@media only screen and (max-width: 1250px) {
-    .movie__card {
-        width: 200px;
-    }
-}
-
-@media only screen and (max-width: 550px) {
-    .movie__list-box {
-        display: flex;
-        justify-content: center;
+    &__list {
+        display: grid;
+        grid-template-columns: 20% 20% 20% 20% 20%;
+        grid-column-gap: 20px;
     }
 }
