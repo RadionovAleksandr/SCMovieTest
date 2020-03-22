@@ -64,13 +64,7 @@ export class MovieService {
     }
 
     getBookmarks(): Observable<Movie[]> {
-        let moviesBookmarks;
-        try {
-            moviesBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
-        } catch (error) {
-            moviesBookmarks = [];
-        }
-
+        const moviesBookmarks = this.getBookmarksFromStorage();
         const request = moviesBookmarks.map(id => {
             return this.http.get<Movie>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
         });
@@ -80,7 +74,6 @@ export class MovieService {
     getGenre(): Observable<ResponseGenre> {
         return this.http.get<ResponseGenre>(`${API_URL}/genre/movie/list?api_key=${API_KEY}`);
     }
-
     getSearchMovie(search: string): Observable<Movie[]> {
         return this.http.get<ResponseMovie>
             (`${API_URL}/search/movie?api_key=${API_KEY}&query=${search}`)
@@ -94,13 +87,7 @@ export class MovieService {
 
     // this method save object movie and save propherty id object movie
     addBookmark(movie) {
-        let moviesBookmarks;
-        try {
-            moviesBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
-        } catch (error) {
-            moviesBookmarks = [];
-        }
-
+        const moviesBookmarks = this.getBookmarksFromStorage();
         if (moviesBookmarks.includes(movie.id) === false) {
             moviesBookmarks.push(movie.id);
             localStorage.setItem('bookmarks', JSON.stringify(moviesBookmarks));
@@ -108,17 +95,11 @@ export class MovieService {
     }
 
     removeBookmark(movie) {
-        let moviesBookmarks;
-        try {
-            moviesBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
-        } catch (error) {
-            moviesBookmarks = [];
-        }
-        moviesBookmarks = moviesBookmarks.filter(item => item !== movie.id);
+        const moviesBookmarks =  this.getBookmarksFromStorage().filter(item => item !== movie.id);
         localStorage.setItem('bookmarks', JSON.stringify(moviesBookmarks));
     }
 
-    getMoviesDetails(id: number): Observable<void> {
+    getMovie(id: number): Observable<void> {
         return this.http.get<void>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
     }
 
@@ -130,6 +111,19 @@ export class MovieService {
                     return movie;
                 });
             }));
+    }
+    private getBookmarksFromStorage() {
+        let moviesBookmarks;
+        try {
+            moviesBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+        } catch (error) {
+            moviesBookmarks = [];
+        }
+        return moviesBookmarks;
+    }
+
+    inBookmarks(id: number): boolean {
+        return this.getBookmarksFromStorage().includes(id);
     }
 }
 

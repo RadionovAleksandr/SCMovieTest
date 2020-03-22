@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { Movie } from '../../movie.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { faBookmark } from '@fortawesome/free-regular-svg-icons';
@@ -11,10 +11,9 @@ import { faBookmark as faBookmarkFill } from '@fortawesome/free-solid-svg-icons'
 
 export class CardComponent implements OnInit {
     @Input() movie: Movie;
-    @Input() objGenres;
-    @Input() remove;
+    @Input() bookmarked: boolean;
+    @Output() toggleBookmark = new EventEmitter();
 
-    local;
     faBookmark = faBookmark;
     faBookmarkFill = faBookmarkFill;
     constructor(private sanitizer: DomSanitizer) { }
@@ -23,7 +22,10 @@ export class CardComponent implements OnInit {
         return this.sanitizer.bypassSecurityTrustUrl(`https://image.tmdb.org/t/p/w${width}${path} ${den}x`);
     }
 
+    toggle() {
+        this.toggleBookmark.emit(!this.bookmarked);
+    }
+
     ngOnInit(): void {
-        this.local = localStorage;
     }
 }

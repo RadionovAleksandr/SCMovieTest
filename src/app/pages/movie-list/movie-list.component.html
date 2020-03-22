@@ -3,7 +3,7 @@
         <app-search class="" (onChange)="onSearch($event)"></app-search>
     </div>
     <div class="movie__list-box">
-        <app-card class="movie__card" *ngFor="let movie of movies" [movie]="movie"></app-card>
+        <app-card class="movie__card" *ngFor="let movie of movies" [movie]="movie" [bookmarked]="checkBookmark(movie)" (toggleBookmark)="eventToggle(movie, $event)"></app-card>
     </div>
-    <!-- <app-pagination [pageSize]="pageSize" [pages]="countPages" [totalResults]="totalResults"></app-pagination> -->
+    <!-- <app-pagination [pageSize]="pageSize " [pages]="countPages " [totalResults]="totalResults "></app-pagination> -->
 </section>

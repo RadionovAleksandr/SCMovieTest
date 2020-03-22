@@ -10,8 +10,9 @@
         <ng-template #imgTemplate>
             <img class="card__poster" [routerLink]="['/info', movie.id]" src="http://placehold.it/300x450" />
         </ng-template>
-        <button class="card__bookmark">
-            <fa-icon  class="card__bookmark-icon" [icon]="faBookmark"></fa-icon>
+        <button class="card__bookmark" (click)="toggle()">
+            <fa-icon *ngIf="!bookmarked"  class="card__bookmark-icon" [icon]="faBookmark" ></fa-icon>
+            <fa-icon *ngIf="bookmarked"  class="card__bookmark-icon" [icon]="faBookmarkFill" ></fa-icon>
         </button>
     </div>
     <h3 class="card__title title">{{ movie.title }}</h3>
