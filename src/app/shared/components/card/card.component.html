@@ -1,15 +1,13 @@
 <div class="card">
     <div class="card__poster-wrap">
         <picture class="card__poster">
-            <source media="(max-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
-            <source media="(min-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
-            <source media="(max-width: 1250px)" [srcset]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
-            <source media="(min-width: 1250px)" [srcset]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
-            <img [src]="getPosterSrc(200, movie.poster_path, 1)" *ngIf="movie.poster_path; else imgTemplate" [routerLink]="['/info', movie.id]" alt="Постер" />
+            <source media="(max-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
+            <source media="(min-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
+            <source media="(max-width: 1250px)" [srcset]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
+            <source media="(min-width: 1250px)" [srcset]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
+            <img [src]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
         </picture>
-        <ng-template #imgTemplate>
-            <img [routerLink]="['/info', movie.id]" src="http://placehold.it/300x450" />
-        </ng-template>
+
         <button class="card__bookmark" (click)="toggle()">
             <fa-icon *ngIf="!bookmarked"  class="card__bookmark-icon" [icon]="faBookmark" ></fa-icon>
             <fa-icon *ngIf="bookmarked"  class="card__bookmark-icon" [icon]="faBookmarkFill" ></fa-icon>

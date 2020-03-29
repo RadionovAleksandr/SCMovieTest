@@ -27,6 +27,11 @@ export interface ResponseMovie {
     total_results: number;
 }
 
+export interface ResponseMovieResult {
+    movies: Movie[];
+    totalResults: number;
+}
+
 export interface Genre {
     id: number;
     name: string;
@@ -52,14 +57,17 @@ export class MovieService {
             });
     }
 
-    getMovies(page = 1): Observable<Movie[]> {
+    getMovies(page = 1): Observable<ResponseMovieResult> {
         return this.http.get<ResponseMovie>
             (`${API_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`)
             .pipe(map(res => {
-                return res.results.map(movie => {
-                    movie.genres = movie.genre_ids.map(id => this.genres.find(g => g.id === id));
-                    return movie;
-                });
+                return {
+                    totalResults: res.total_results,
+                    movies: res.results.map(movie => {
+                        movie.genres = movie.genre_ids.map(id => this.genres.find(g => g.id === id));
+                        return movie;
+                    })
+                }
             }));
     }
 
@@ -95,7 +103,7 @@ export class MovieService {
     }
 
     removeBookmark(movie) {
-        const moviesBookmarks =  this.getBookmarksFromStorage().filter(item => item !== movie.id);
+        const moviesBookmarks = this.getBookmarksFromStorage().filter(item => item !== movie.id);
         localStorage.setItem('bookmarks', JSON.stringify(moviesBookmarks));
     }
 

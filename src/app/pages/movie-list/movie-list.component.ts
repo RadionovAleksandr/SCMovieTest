@@ -7,22 +7,22 @@ import { MovieService, Movie, Genre } from '../../shared/movie.service';
     styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent implements OnInit {
+    pageSize = 20;
     movies: Movie[];
     genres: Genre[];
-    countPages: number;
-    pageSize: number;
     totalResults: number;
     initialList: Movie[];
-    page: number;
+
     constructor(
         private movieService: MovieService,
     ) { }
 
-    getMovies() {
-        this.movieService.getMovies()
-            .subscribe(movies => {
-                this.movies = [...movies];
-                this.initialList = [...movies];
+    getMovies(page?) {
+        this.movieService.getMovies(page)
+            .subscribe(res => {
+                this.movies = [...res.movies];
+                this.initialList = [...res.movies];
+                this.totalResults = res.totalResults;
             });
     }
 
@@ -48,14 +48,8 @@ export class MovieListComponent implements OnInit {
         }
     }
 
-    
     changePageList(pageChange) {
-        // this.movieService.getMovies(pageChange)
-        // .subscribe((movies) => {
-            console.log(pageChange);
-            // this.movieListComponent.movies = movies;
-            // localStorage.setItem('page', pageChange);
-        // });
+        this.getMovies(pageChange);
     }
 
     ngOnInit() {
