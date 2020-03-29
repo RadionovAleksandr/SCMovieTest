@@ -7,11 +7,10 @@ import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 
 
 const routes: Routes = [
-    // { path: '', component: AppComponent },
+    { path: '', component: MovieListComponent },
     { path: 'bookmarks', component: MovieBookmarksComponent },
     { path: 'info', component: MovieInfoComponent },
     { path: 'info/:id', component: MovieInfoComponent },
-    { path: '', component: MovieListComponent }
 ];
 
 @NgModule({

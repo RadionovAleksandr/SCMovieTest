@@ -8,3 +8,27 @@
         grid-column-gap: 20px;
     }
 }
+
+.card__text {
+    margin: 13px 0;
+    white-space: pre-line;
+}
+
+@media only screen and (max-width: 950px) {
+    .movie {
+        &__list {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .text.card__text {
+        line-height: 0;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .movie {
+        &__list {
+            grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}

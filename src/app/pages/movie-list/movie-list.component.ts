@@ -40,12 +40,22 @@ export class MovieListComponent implements OnInit {
     checkBookmark(movie) {
         return this.movieService.inBookmarks(movie.id);
     }
-    eventToggle(movie, bool) {
+    toggleBookmark(movie, bool) {
         if (bool) {
             this.movieService.addBookmark(movie);
         } else {
             this.movieService.removeBookmark(movie);
         }
+    }
+
+    
+    changePageList(pageChange) {
+        // this.movieService.getMovies(pageChange)
+        // .subscribe((movies) => {
+            console.log(pageChange);
+            // this.movieListComponent.movies = movies;
+            // localStorage.setItem('page', pageChange);
+        // });
     }
 
     ngOnInit() {

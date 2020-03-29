@@ -3,3 +3,18 @@
     grid-template-columns: repeat(5, 1fr);
     grid-column-gap: 20px;
 }
+
+@media only screen and (max-width: 950px) {
+    .bookmarks {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .text.card__text {
+        line-height: 0;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .bookmarks {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

@@ -19,11 +19,16 @@
     }
 }
 
-@media only screen and (max-width: 850px) {
+@media only screen and (max-width: 950px) {
     .search {
         font-size: 12px;
         top: 120px;
         left: 0;
-        margin-left: 11%;
+    }
+}
+
+@media only screen and (max-width: 550px) {
+    .search {
+        width: 120%;
     }
 }

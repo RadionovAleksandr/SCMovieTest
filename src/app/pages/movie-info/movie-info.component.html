@@ -3,10 +3,7 @@
         <div class="card-movie__img-wrap">
             <picture>
                 <source media="(max-width: 600px)" type="image/webp " srcset="https://image.tmdb.org/t/p/w300{{movie?.backdrop_path}} 1x" *ngIf="movie.backdrop_path; else imgTemplate" alt="Постер">
-                <!-- <source media="(max-width: 1100px)" type="image/webp " srcset="https://image.tmdb.org/t/p/w200{{movie?.backdrop_path}} 1x" *ngIf="movie.backdrop_path; else imgTemplate" alt="Постер"> -->
-
                 <source media="(max-width: 600px)" srcset="https://image.tmdb.org/t/p/w300{{movie?.backdrop_path}} 1x" *ngIf="movie.backdrop_path; else imgTemplate" alt="Постер">
-                <!-- <source media="(max-width: 1100px)" srcset="https://image.tmdb.org/t/p/w200{{movie?.backdrop_path}} 1x" *ngIf="movie.backdrop_path; else imgTemplate" alt="Постер"> -->
                 <img src="https://image.tmdb.org/t/p/w500{{movie?.backdrop_path}}" *ngIf="movie.backdrop_path; else imgTemplate" alt="Постер">
             </picture>
             <ng-template #imgTemplate>
@@ -29,7 +26,7 @@
                 <span class="statistics__column statistics__column--right">{{movie?.tagline}}</span>
             </div>
             <div class="statistics__views card__text text">
-                <span class="statistics__column statistics__column--left">Views: </span>
+                <span class="statistics__column statistics__column--left">Popularity: </span>
                 <span class="statistics__column statistics__column--right">{{movie?.popularity}}</span>
             </div>
             <div class="statistics__vote-average card__text text">

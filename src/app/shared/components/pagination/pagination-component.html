@@ -1,3 +1,2 @@
-<!-- <ngb-pagination [collectionSize]="totalResults" [maxSize]="maxSize" [pageSize]="pageSize" [(page)]="page" [boundaryLinks]="true"></ngb-pagination> -->
-
-<hr>
+<ngb-pagination [collectionSize]="totalResults" [pageSize]="pageSize" [(page)]="page" (pageChange)="bootstrapPaginationChange($event)">
+</ngb-pagination>
