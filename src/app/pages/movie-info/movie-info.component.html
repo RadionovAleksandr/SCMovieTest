@@ -6,38 +6,38 @@
                 <source media="(max-width: 600px)" srcset="https://image.tmdb.org/t/p/w300{{movie?.backdrop_path}} 1x" alt="Постер">
                 <img src="https://image.tmdb.org/t/p/w500{{movie?.backdrop_path}}" alt="Постер">
             </picture>
-            <button class="btn info-movie-basiс__btn" *ngIf="!local.bookmarks?.includes(movie?.id)" (click)="addBookmarks(movie)">
+            <button class="btn info-movie-basiс__btn" *ngIf="!isBookmark" (click)=" addBookmarks(movie) ">
             add bookmarks
             </button>
         </div>
-        <a class="info-movie-basiс__title title" href="{{movie?.homepage}}" target="_blank">{{movie?.title}}</a>
-        <div class="info-movie-basiс__text text">{{movie?.overview}}</div>
+        <a class="info-movie-basiс__title title " href="{{movie?.homepage}} " target="_blank ">{{movie?.title}}</a>
+        <div class="info-movie-basiс__text text ">{{movie?.overview}}</div>
     </div>
 
-    <div class="info-movie-detaled">
-        <b><span class="info-movie-detaled__rating">{{movie?.vote_average}}<sub class="info-movie-detaled__small">{{movie?.vote_count}}</sub></span></b>
+    <div class="info-movie-detaled ">
+        <b><span class="info-movie-detaled__rating ">{{movie?.vote_average}}<sub class="info-movie-detaled__small ">{{movie?.vote_count}}</sub></span></b>
 
-        <div class="info-movie-detaled__statistics">
-            <div class="statistics__tagline info-movie-detaled__text text">
-                <span class="statistics__column statistics__column--left">Tagline: </span>
-                <span class="statistics__column statistics__column--right">{{movie?.tagline}}</span>
+        <div class="info-movie-detaled__statistics ">
+            <div class="statistics__tagline info-movie-detaled__text text ">
+                <span class="statistics__column statistics__column--left ">Tagline: </span>
+                <span class="statistics__column statistics__column--right ">{{movie?.tagline}}</span>
             </div>
-            <div class="statistics__views info-movie-detaled__text text">
-                <span class="statistics__column statistics__column--left">Popularity: </span>
-                <span class="statistics__column statistics__column--right">{{movie?.popularity}}</span>
+            <div class="statistics__views info-movie-detaled__text text ">
+                <span class="statistics__column statistics__column--left ">Popularity: </span>
+                <span class="statistics__column statistics__column--right ">{{movie?.popularity}}</span>
             </div>
-            <div class="statistics__vote-average info-movie-detaled__text text">
-                <span class="statistics__column statistics__column--left">Release date:</span>
-                <span class="statistics__column statistics__column--right">{{movie?.release_date}}</span>
+            <div class="statistics__vote-average info-movie-detaled__text text ">
+                <span class="statistics__column statistics__column--left ">Release date:</span>
+                <span class="statistics__column statistics__column--right ">{{movie?.release_date}}</span>
             </div>
         </div>
-        <div class="info-movie-detaled__genres text">
-            <div class="info-movie-detaled__genre-item genre-item" *ngFor="let genre of movie?.genres">
+        <div class="info-movie-detaled__genres text ">
+            <div class="info-movie-detaled__genre-item genre-item " *ngFor="let genre of movie?.genres ">
                 {{genre.name}}
             </div>
         </div>
     </div>
-    <div class="info-movie__similar">
-        <app-card class="info-movie__similar-card" *ngFor="let movie of moviesSimilar" [routerLink]="['/info', movie.id]" [movie]="movie"></app-card>
+    <div class="info-movie__similar ">
+        <app-card class="info-movie__similar-card " *ngFor="let movie of moviesSimilar " [routerLink]="[ '/info', movie.id] " [movie]="movie "></app-card>
     </div>
 </section>

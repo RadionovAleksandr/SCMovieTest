@@ -11,10 +11,10 @@ import { MovieService } from '../../shared/movie.service';
 
 export class MovieInfoComponent implements OnInit {
 
-    movie;
-    moviesSimilar;
+    movie: Movie;
+    moviesSimilar: Movie[];
     bookmarks: Movie[] = [];
-    local;
+    isBookmark: boolean;
 
     constructor(
         private route: ActivatedRoute,
@@ -23,20 +23,24 @@ export class MovieInfoComponent implements OnInit {
 
     ngOnInit(): void {
         this.route.params
-            .subscribe((params: Params) => {
+            .subscribe((params: Params) => {           // todo: use rxjs optimizaion subscribe
                 this.movieService.getMovie(params.id)
                     .subscribe(movie => {
                         this.movie = movie;
                     });
-
                 this.movieService.getSimilar(params.id)
                     .subscribe(movies => {
                         this.moviesSimilar = movies;
                     });
+                this.setBookmarkCard(+params.id);
             });
-        this.local = localStorage;
     }
     addBookmarks(movie: Movie) {
         this.movieService.addBookmark(movie);
+        this.setBookmarkCard(movie.id);
+    }
+
+    setBookmarkCard(id: number) {
+        this.isBookmark = this.movieService.inBookmarks(id);
     }
 }

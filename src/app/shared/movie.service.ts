@@ -19,6 +19,8 @@ export interface Movie {
     genre_ids: number[];
     genres?: Genre[];
     bookmark: boolean;
+    tagline: string;
+    homepage: string;
 }
 
 export interface ResponseMovie {
@@ -67,7 +69,7 @@ export class MovieService {
                         movie.genres = movie.genre_ids.map(id => this.genres.find(g => g.id === id));
                         return movie;
                     })
-                }
+                };
             }));
     }
 
@@ -107,8 +109,8 @@ export class MovieService {
         localStorage.setItem('bookmarks', JSON.stringify(moviesBookmarks));
     }
 
-    getMovie(id: number): Observable<void> {
-        return this.http.get<void>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
+    getMovie(id: number): Observable<Movie> {
+        return this.http.get<Movie>(`${API_URL}/movie/${id}?api_key=${API_KEY}`);
     }
 
     getSimilar(movieID: number): Observable<Movie[]> {
