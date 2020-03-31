@@ -1,5 +1,6 @@
-.card-movie {
-    max-width: 43%;
+@import '../../../mixins.scss';
+.info-movie-basiс {
+    max-width: 50%;
     img {
         padding-right: 40px;
     }
@@ -8,10 +9,34 @@
     }
     &__img-wrap {
         position: relative;
+        width: 500px;
+    }
+    &__title {
+        display: flex;
+        font-size: 22px;
+        padding: 10px 0;
+    }
+    &__text {
+        padding: 10px 0 5px 0;
+        display: flex;
+        justify-content: space-between;
+    }
+    &__text {
+        line-height: 22px;
+    }
+    &__btn {
+        position: relative;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        position: absolute;
+        top: 220px;
+        left: 400px;
+        &:hover {
+            opacity: 1 !important;
+        }
     }
 }
 
-.card {
+.info-movie-detaled {
     &__statistics {
         max-width: 380px;
     }
@@ -34,15 +59,19 @@
         display: flex;
         justify-content: space-between;
     }
+    &__genre-item {
+        padding: 10px;
+        background-color: rgb(122, 47, 141);
+    }
 }
 
 .statistics {
     &__column--right {
-        width: 60%;
+        width: 70%;
         text-align: right;
     }
     &__column--left {
-        width: 40%;
+        width: 30%;
     }
 }
 
@@ -53,58 +82,22 @@
     &__card {
         width: 47%;
     }
-    &__btn {
-        position: relative;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-        position: absolute;
-        top: 220px;
-        left: 400px;
-        &:hover {
-            opacity: 1 !important;
-        }
-    }
     &__similar {
-        margin: auto;
-        margin-top: 80px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-    }
-    &__title {
-        display: flex;
-        font-size: 22px;
-    }
-    &__title a {
-        padding: 10px 0;
-    }
-    &__text {
-        padding: 10px 0 5px 0;
-        display: flex;
-        justify-content: space-between;
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        grid-column-gap: 20px;
+        padding-top: 30px;
     }
     &__similar-card {
-        width: 300px;
+        width: 100%;
         margin: 0 10px;
-    }
-    &__text {
-        line-height: 22px;
     }
 }
 
-@media only screen and (max-width: 1250px) {
-    .info-movie {
-        &__similar-card {
-            width: 200px;
-        }
-        &__btn {
-            // top: 160px;
-            // left: 300px;
-        }
-        &__card {
-            padding-top: 300px;
-        }
-    }
-    .card {
+@media only screen and (max-width: $large-size) {
+    .info-movie-detaled {
+        padding-top: 300px;
+        width: 43%;
         &__rating {
             font-size: 24px;
         }
@@ -117,28 +110,53 @@
     }
 }
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: $middle-size) {
     .info-movie {
-        &__card {
-            padding-top: 170px;
+        &__title {
+            padding-top: 10px;
+        }
+        &__similar {
+            @include item-card;
         }
     }
 }
 
-.info-movie {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    &__card {
-        width: 47%;
+@media only screen and (max-width: $small-size + 50px) {
+    .info-movie-detaled {
+        padding-top: 20px;
+        width: 100%;
+        &__rating {
+            position: absolute;
+            right: 15%;
+            top: 150px;
+        }
+    }
+    .info-movie-basiс {
+        max-width: 100%;
+        &__card {
+            padding-top: 20px;
+            width: 100%;
+        }
+        &__img-wrap {
+            width: 300px;
+        }
+        &__btn {
+            font-size: 12px;
+            padding: 5px;
+            top: 110px;
+            left: 220px;
+        }
+        &__similar {
+            @include item-card;
+        }
     }
 }
 
-@media only screen and (max-width: 600px) {
-    .info-movie {
-        &__btn {
-            top: 110px;
-            left: 220px;
+@media only screen and (max-width: $extra-small-size) {
+    .info-movie-detaled {
+        &__rating {
+            position: absolute;
+            right: 55px;
         }
     }
 }

@@ -1,0 +1,12 @@
+$large-size: 1250px;
+$middle-size: 950px;
+$small-size: 550px;
+$extra-small-size: 500px;
+@mixin item-card {
+    @media only screen and (max-width: $middle-size) {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    @media only screen and (max-width: $small-size) {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

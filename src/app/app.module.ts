@@ -9,10 +9,10 @@ import { AppComponent } from './app.component';
 import { MovieBookmarksComponent } from './pages/movie-bookmarks/movie-bookmarks.component';
 import { MovieInfoComponent } from './pages/movie-info/movie-info.component';
 import { MovieListComponent } from './pages/movie-list/movie-list.component';
-import { NgbdPaginationModule } from './shared/components/pagination/pagination-component.module';
 import { CardComponent } from './shared/components/card/card.component';
 import { SearchComponent } from './shared/components/search/search.component';
 import { HeaderComponent } from './shared/components/header/header.component';
+import { AppPaginationModule } from './shared/components/pagination/pagination-component.module';
 
 @NgModule({
     declarations: [
@@ -29,7 +29,7 @@ import { HeaderComponent } from './shared/components/header/header.component';
         FormsModule,
         AppRoutingModule,
         HttpClientModule,
-        NgbdPaginationModule,
+        AppPaginationModule,
         FontAwesomeModule
     ],
     providers: [],

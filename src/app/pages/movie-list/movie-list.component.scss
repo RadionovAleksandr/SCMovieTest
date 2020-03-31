@@ -1,3 +1,4 @@
+@import "../../../mixins.scss";
 .movie {
     &__search-wrap {
         display: flex;
@@ -14,10 +15,10 @@
     white-space: pre-line;
 }
 
-@media only screen and (max-width: 950px) {
+@media only screen and (max-width: $middle-size) {
     .movie {
         &__list {
-            grid-template-columns: repeat(3, 1fr);
+            @include item-card;
         }
     }
     .text.card__text {
@@ -25,10 +26,10 @@
     }
 }
 
-@media only screen and (max-width: 550px) {
+@media only screen and (max-width: $small-size) {
     .movie {
         &__list {
-            grid-template-columns: repeat(2, 1fr);
+            @include item-card;
         }
     }
 }

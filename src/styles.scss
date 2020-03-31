@@ -423,6 +423,7 @@ template {
 common styles
    */
 
+@import 'mixins';
 html {
     width: auto;
     height: auto;
@@ -449,7 +450,7 @@ h3,
     cursor: default;
 }
 
-@media only screen and (min-width: 1250px) {
+@media only screen and (min-width: $large-size) {
     .text {
         font-size: 16px;
     }
@@ -458,7 +459,7 @@ h3,
     }
 }
 
-@media only screen and (max-width: 1250px) {
+@media only screen and (max-width: $large-size) {
     .text {
         font-size: 12px;
     }

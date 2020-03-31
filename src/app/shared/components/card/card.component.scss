@@ -1,3 +1,4 @@
+@import '../../../../mixins.scss';
 .card {
     padding-bottom: 20px;
     &__title {
@@ -6,7 +7,7 @@
     &__genre-wrap {
         display: flex;
         flex-wrap: wrap;
-        padding: 10px 0;
+        padding-bottom: 10px;
     }
     &__bookmark {
         opacity: 0;
@@ -20,6 +21,10 @@
             color: rgb(151, 40, 40);
         }
     }
+    &__genre-item {
+        padding: 10px;
+        background-color: rgb(122, 47, 141);
+    }
     &:hover .card__bookmark {
         opacity: 1;
     }
@@ -30,10 +35,9 @@
     &__poster-wrap {
         position: relative;
     }
-}
-
-@media only screen and (max-width: 550px) {
-    // .movie__card {
-    //     justify-content: center;
-    // }
+    @media only screen and (max-width: $large-size) {
+        .card__genre-item {
+            padding: 5px;
+        }
+    }
 }

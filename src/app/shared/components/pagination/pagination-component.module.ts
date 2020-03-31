@@ -10,4 +10,4 @@ import { AppPaginationComponent } from './pagination-component';
     exports: [AppPaginationComponent],
     bootstrap: [AppPaginationComponent]
 })
-export class NgbdPaginationModule { }
+export class AppPaginationModule{ }
