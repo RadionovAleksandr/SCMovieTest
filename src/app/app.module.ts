@@ -30,7 +30,7 @@ import { AppPaginationModule } from './shared/components/pagination/pagination-c
         AppRoutingModule,
         HttpClientModule,
         AppPaginationModule,
-        FontAwesomeModule
+        FontAwesomeModule,
     ],
     providers: [],
     exports: [],

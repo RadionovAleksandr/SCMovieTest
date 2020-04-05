@@ -5,6 +5,7 @@
     <div class="movie__list">
         <app-card *ngFor="let movie of movies" [movie]="movie" [bookmarked]="checkBookmark(movie)" (toggleBookmark)="toggleBookmark(movie, $event)"></app-card>
     </div>
-    <app-pagination [pageSize]="pageSize" [totalResults]="totalResults" (pageChange)="changePageList($event)"></app-pagination>
+    <!-- <ngbd-pagination-basic></ngbd-pagination-basic> -->
+    <app-pagination class="app__pagination" [pageSize]="pageSize" [totalResults]="totalResults" (pageChange)="changePageList($event)"></app-pagination>
 
 </section>
