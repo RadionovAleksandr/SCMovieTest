@@ -31,6 +31,7 @@ export class MovieListComponent implements OnInit {
     }
 
     onSearch(str) {
+        console.log('START onSearch ');
         if (!str) {
             this.movies = this.initialList;
             return;
