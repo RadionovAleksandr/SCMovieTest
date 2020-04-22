@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Movie } from '../../shared/movie.service';
 import { ActivatedRoute, Params } from '@angular/router';
 import { MovieService } from '../../shared/movie.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-movie-info',
@@ -9,12 +10,13 @@ import { MovieService } from '../../shared/movie.service';
     styleUrls: ['./movie-info.component.scss']
 })
 
-export class MovieInfoComponent implements OnInit {
+export class MovieInfoComponent implements OnInit, OnDestroy {
 
     movie: Movie;
     moviesSimilar: Movie[];
     bookmarks: Movie[] = [];
     isBookmark: boolean;
+    gSub: Subscription;
 
     constructor(
         private route: ActivatedRoute,
@@ -22,7 +24,7 @@ export class MovieInfoComponent implements OnInit {
     ) { }
 
     ngOnInit(): void {
-        this.route.params
+        this.gSub = this.route.params
             .subscribe((params: Params) => {           // todo: use rxjs optimizaion subscribe
                 this.movieService.getMovie(params.id)
                     .subscribe(movie => {
@@ -55,5 +57,11 @@ export class MovieInfoComponent implements OnInit {
 
     checkBookmark(movie) {
         return this.movieService.inBookmarks(movie.id);
+    }
+
+    ngOnDestroy() {
+        if (this.gSub) {
+            this.gSub.unsubscribe();
+        }
     }
 }

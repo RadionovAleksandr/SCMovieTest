@@ -1,17 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { MovieService, Movie, Genre } from '../../shared/movie.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-movie-list',
     templateUrl: './movie-list.component.html',
     styleUrls: ['./movie-list.component.scss']
 })
-export class MovieListComponent implements OnInit {
+export class MovieListComponent implements OnInit, OnDestroy {
     pageSize = 20;
     movies: Movie[];
     genres: Genre[];
     totalResults: number;
     initialList: Movie[];
+    gSub: Subscription;
+    cSub: Subscription;
     load: boolean;
 
     constructor(
@@ -20,7 +23,7 @@ export class MovieListComponent implements OnInit {
 
     getMovies(page?) {
         this.load = true;
-        this.movieService.getMovies(page)
+        this.gSub = this.movieService.getMovies(page)
             .subscribe(res => {
                 console.log(res);
                 this.movies = [...res.movies];
@@ -36,7 +39,7 @@ export class MovieListComponent implements OnInit {
             this.movies = this.initialList;
             return;
         }
-        this.movieService.getSearchMovie(str)
+        this.cSub = this.movieService.getSearchMovie(str)
             .subscribe(movies => {
                 this.movies = movies;
             });
@@ -60,5 +63,14 @@ export class MovieListComponent implements OnInit {
 
     ngOnInit() {
         this.getMovies();
+    }
+
+    ngOnDestroy() {
+        if (this.gSub) {
+            this.gSub.unsubscribe();
+        }
+        if (this.cSub) {
+            this.cSub.unsubscribe();
+        }
     }
 }

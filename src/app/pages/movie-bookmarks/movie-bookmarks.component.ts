@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, OnDestroy } from '@angular/core';
 import { Movie, MovieService } from '../../shared/movie.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-movie-bookmarks',
@@ -7,13 +8,15 @@ import { Movie, MovieService } from '../../shared/movie.service';
     styleUrls: ['./movie-bookmarks.component.scss']
 })
 
-export class MovieBookmarksComponent implements OnInit {
+export class MovieBookmarksComponent implements OnInit, OnDestroy{
 
     page: number = 1;
     movies: Movie[];
     load: boolean;
     pageSize = 20;
     totalResults: number;
+    gSub: Subscription;
+    cSub: Subscription;
 
     constructor(
         private movieService: MovieService,
@@ -21,7 +24,7 @@ export class MovieBookmarksComponent implements OnInit {
 
     ngOnInit(): void {
         this.load = true;
-        this.movieService.getBookmarks()
+        this.gSub = this.movieService.getBookmarks()
             .subscribe(movies => {
                 this.pagination(movies);
             });
@@ -46,9 +49,18 @@ export class MovieBookmarksComponent implements OnInit {
 
     changePageList(pageChange) {
         this.page = pageChange;
-        this.movieService.getBookmarks()
+        this.cSub = this.movieService.getBookmarks()
             .subscribe(movies => {
                 this.pagination(movies);
             });
+    }
+
+    ngOnDestroy() {
+        if (this.gSub) {
+            this.gSub.unsubscribe();
+        }
+        if (this.cSub) {
+            this.cSub.unsubscribe();
+        }
     }
 }
