@@ -1,4 +1,13 @@
-.app__pagination ul {
-    display: flex;
-    justify-content: center;
+@import "~bootstrap/scss/bootstrap";
+.page-item.active .page-link {
+    border-color: rgb(98, 162, 186);
+    background-color: rgb(98, 162, 186);
+}
+
+.page-link {
+    background-color: rgba(233, 233, 233, 0.952)
+}
+
+.page-item.disabled .page-link {
+    background-color: rgba(233, 233, 233, 0.952)
 }

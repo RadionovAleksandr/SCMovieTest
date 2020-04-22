@@ -1,6 +1,14 @@
-<div class="card">
-    <div class="card__poster-wrap">
-        <picture class="card__poster">
+<div class="card-box">
+
+
+    <div class="card-box__poster-wrap">
+
+        <button class="card-box__bookmark" (click)="toggle($event)">
+            <fa-icon *ngIf="!bookmarked"  class="card-box__bookmark-icon" [icon]="faBookmark" ></fa-icon>
+            <fa-icon *ngIf="bookmarked"  class="card-box__bookmark-icon" [icon]="faBookmarkFill" ></fa-icon>
+        </button>
+
+        <picture class="card-box__poster">
             <source media="(max-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
             <source media="(min-width: 1250px)" type="image/webp" [srcset]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
             <source media="(max-width: 1250px)" [srcset]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
@@ -8,18 +16,14 @@
             <img [src]="getPosterSrc(200, movie.poster_path, 1)" [routerLink]="['/info', movie.id]" alt="Постер" />
         </picture>
 
-        <button class="card__bookmark" (click)="toggle()">
-            <fa-icon *ngIf="!bookmarked"  class="card__bookmark-icon" [icon]="faBookmark" ></fa-icon>
-            <fa-icon *ngIf="bookmarked"  class="card__bookmark-icon" [icon]="faBookmarkFill" ></fa-icon>
-        </button>
     </div>
-    <h3 class="card__title title">{{ movie.title }}</h3>
-    <p class="card__text text">Release date: {{ movie.release_date }}</p>
-    <p class="card__text text">Viewers rating: {{ movie.vote_average }}</p>
-    <p class="card__text text">Vote count: {{ movie.vote_count }}</p>
+    <h3 class="card-box__title title">{{ movie.title }}</h3>
+    <p class="card-box__text text">Release date: {{ movie.release_date }}</p>
+    <p class="card-box__text text">Viewers rating: {{ movie.vote_average }}</p>
+    <p class="card-box__text text">Vote count: {{ movie.vote_count }}</p>
 
-    <div class="card__genre-wrap">
-        <div class="card__genre-item genre-item text" *ngFor="let genre of movie.genres">
+    <div class="card-box__genre-wrap">
+        <div class="card-box__genre-item genre-item text" *ngFor="let genre of movie.genres">
             {{genre.name}}
         </div>
     </div>

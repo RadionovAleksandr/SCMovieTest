@@ -22,8 +22,10 @@ export class CardComponent implements OnInit {
         return this.sanitizer.bypassSecurityTrustUrl(`https://image.tmdb.org/t/p/w${width}${path} ${den}x`);
     }
 
-    toggle() {
+    toggle(event) {
+        console.log(' event ', event);
         this.toggleBookmark.emit(!this.bookmarked);
+        event.stopPropagation();
     }
 
     ngOnInit(): void {

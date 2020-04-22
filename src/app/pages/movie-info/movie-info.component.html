@@ -1,4 +1,4 @@
-<section class="info-movie">
+<section class="info-movie" *ngIf="movie; else loading">
     <div class="info-movie-basiс">
         <div class="info-movie-basiс__img-wrap">
             <picture>
@@ -37,7 +37,12 @@
             </div>
         </div>
     </div>
-    <div class="info-movie__similar ">
-        <app-card class="info-movie__similar-card " *ngFor="let movie of moviesSimilar " [routerLink]="[ '/info', movie.id] " [movie]="movie "></app-card>
+    <div class="info-movie__similar">
+        <app-card class="info-movie__similar-card" *ngFor="let movie of moviesSimilar" [routerLink]="[ '/info', movie.id]" [movie]="movie" (toggleBookmark)="toggleBookmark(movie, $event)" [bookmarked]="checkBookmark(movie)"></app-card>
     </div>
 </section>
+
+
+<ng-template #loading>
+    <div class="dot-spin"></div>
+</ng-template>

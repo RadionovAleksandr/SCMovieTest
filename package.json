@@ -26,9 +26,11 @@
         "@fortawesome/free-regular-svg-icons": "^5.12.1",
         "@fortawesome/free-solid-svg-icons": "^5.12.1",
         "@ng-bootstrap/ng-bootstrap": "^6.0.2",
+        "bootstrap": "^4.4.1",
         "jw-angular-pagination": "^1.1.0",
         "jw-paginate": "^1.0.4",
         "rxjs": "~6.5.4",
+        "three-dots": "^0.2.0",
         "tslib": "^1.10.0",
         "zone.js": "~0.10.2"
     },

@@ -1,8 +1,16 @@
 @import '../../../../mixins.scss';
-.card {
+.card-box {
     padding-bottom: 20px;
+    &:hover {
+        background: radial-gradient(ellipse, rgba(87, 99, 120, 0.3), rgba(53, 66, 86, 0.3));
+        box-shadow: 0 0 20px rgba(122, 47, 141, 0.4);
+        .card-box__title {
+            color: indianred;
+        }
+    }
     &__title {
         font-weight: normal;
+        cursor: pointer;
     }
     &__genre-wrap {
         display: flex;
@@ -10,34 +18,41 @@
         padding-bottom: 10px;
     }
     &__bookmark {
-        opacity: 0;
+        cursor: pointer;
         position: absolute;
         top: 0;
         right: 10px;
         background-color: transparent;
         border: none;
+        outline: none;
+        &:hover .card-box__bookmark-icon {
+            color: rgb(147, 40, 151);
+        }
         &-icon {
             font-size: 25px;
             color: rgb(151, 40, 40);
         }
     }
     &__genre-item {
-        padding: 10px;
+        padding: 6px;
         background-color: rgb(122, 47, 141);
-    }
-    &:hover .card__bookmark {
-        opacity: 1;
     }
     &__poster img {
         width: 100%;
         height: auto;
     }
     &__poster-wrap {
+        &:hover {
+            box-shadow: 0 0 20px rgba(122, 47, 141, 1);
+        }
         position: relative;
     }
     @media only screen and (max-width: $large-size) {
-        .card__genre-item {
-            padding: 5px;
+        &__genre-item {
+            padding: 4px;
+        }
+        &__text {
+            margin-bottom: 8px;
         }
     }
 }

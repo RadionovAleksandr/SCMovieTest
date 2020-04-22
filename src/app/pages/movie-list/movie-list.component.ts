@@ -12,17 +12,21 @@ export class MovieListComponent implements OnInit {
     genres: Genre[];
     totalResults: number;
     initialList: Movie[];
+    load: boolean;
 
     constructor(
         private movieService: MovieService,
     ) { }
 
     getMovies(page?) {
+        this.load = true;
         this.movieService.getMovies(page)
             .subscribe(res => {
+                console.log(res);
                 this.movies = [...res.movies];
                 this.initialList = [...res.movies];
                 this.totalResults = res.totalResults;
+                this.load = false;
             });
     }
 
@@ -41,6 +45,7 @@ export class MovieListComponent implements OnInit {
         return this.movieService.inBookmarks(movie.id);
     }
     toggleBookmark(movie, bool) {
+        console.log(' START toggleBookmark ');
         if (bool) {
             this.movieService.addBookmark(movie);
         } else {

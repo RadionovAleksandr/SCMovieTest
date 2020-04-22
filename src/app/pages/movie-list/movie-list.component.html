@@ -1,11 +1,15 @@
-<section class="movie">
+<section class="movie" *ngIf="!load; else loading">
     <div class="movie__search-wrap">
         <app-search (onChange)="onSearch($event)"></app-search>
     </div>
     <div class="movie__list">
-        <app-card *ngFor="let movie of movies" [movie]="movie" [bookmarked]="checkBookmark(movie)" (toggleBookmark)="toggleBookmark(movie, $event)"></app-card>
+        <app-card *ngFor="let movie of movies" [movie]="movie" [bookmarked]="checkBookmark(movie)" (toggleBookmark)="toggleBookmark(movie, $event)">
+        </app-card>
     </div>
-    <!-- <ngbd-pagination-basic></ngbd-pagination-basic> -->
-    <app-pagination class="app__pagination" [pageSize]="pageSize" [totalResults]="totalResults" (pageChange)="changePageList($event)"></app-pagination>
-
+    <app-pagination class="app__pagination" [pageSize]="pageSize" [totalResults]="totalResults" (pageChange)="changePageList($event)">
+    </app-pagination>
 </section>
+
+<ng-template #loading>
+    <div class="dot-spin"></div>
+</ng-template>

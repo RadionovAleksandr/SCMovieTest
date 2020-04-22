@@ -43,4 +43,17 @@ export class MovieInfoComponent implements OnInit {
     setBookmarkCard(id: number) {
         this.isBookmark = this.movieService.inBookmarks(id);
     }
+
+    toggleBookmark(movie, bool) {
+        console.log(' START toggleBookmark ');
+        if (bool) {
+            this.movieService.addBookmark(movie);
+        } else {
+            this.movieService.removeBookmark(movie);
+        }
+    }
+
+    checkBookmark(movie) {
+        return this.movieService.inBookmarks(movie.id);
+    }
 }
