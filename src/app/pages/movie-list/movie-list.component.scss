@@ -1,4 +1,4 @@
-@import "../../../mixins.scss";
+@import '../../../mixins.scss';
 .movie {
     &__search-wrap {
         display: flex;
@@ -31,5 +31,11 @@
         &__list {
             @include item-card;
         }
+    }
+}
+
+.movie__list {
+    @media only screen and (min-width: $huge-size) {
+        grid-template-columns: repeat(7, 1fr);
     }
 }

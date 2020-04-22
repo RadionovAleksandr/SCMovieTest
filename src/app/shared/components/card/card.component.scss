@@ -1,5 +1,6 @@
 @import '../../../../mixins.scss';
 .card-box {
+    max-width: 200px;
     padding-bottom: 20px;
     &:hover {
         background: radial-gradient(ellipse, rgba(87, 99, 120, 0.3), rgba(53, 66, 86, 0.3));
