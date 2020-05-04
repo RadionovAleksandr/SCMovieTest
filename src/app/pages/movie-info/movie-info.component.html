@@ -6,9 +6,9 @@
                 <source media="(max-width: 600px)" srcset="https://image.tmdb.org/t/p/w300{{movie?.backdrop_path}} 1x" alt="Постер">
                 <img src="https://image.tmdb.org/t/p/w500{{movie?.backdrop_path}}" alt="Постер">
             </picture>
-            <button class="btn info-movie-basiс__btn" *ngIf="!isBookmark" (click)=" addBookmarks(movie) ">
+            <!-- <button class="btn info-movie-basiс__btn" *ngIf="!isBookmark" (click)=" addBookmarks(movie) ">
             add bookmarks
-            </button>
+            </button> -->
         </div>
         <a class="info-movie-basiс__title title " href="{{movie?.homepage}} " target="_blank ">{{movie?.title}}</a>
         <div class="info-movie-basiс__text text ">{{movie?.overview}}</div>

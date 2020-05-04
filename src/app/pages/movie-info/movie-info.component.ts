@@ -47,12 +47,8 @@ export class MovieInfoComponent implements OnInit, OnDestroy {
     }
 
     toggleBookmark(movie, bool) {
-        console.log(' START toggleBookmark ');
-        if (bool) {
-            this.movieService.addBookmark(movie);
-        } else {
-            this.movieService.removeBookmark(movie);
-        }
+        bool ? this.movieService.addBookmark(movie)
+        : this.movieService.removeBookmark(movie);
     }
 
     checkBookmark(movie) {

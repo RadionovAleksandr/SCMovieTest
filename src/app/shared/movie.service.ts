@@ -60,6 +60,7 @@ export class MovieService {
     }
 
     getMovies(page = 1): Observable<ResponseMovieResult> {
+        console.log(page)
         return this.http.get<ResponseMovie>
             (`${API_URL}/movie/now_playing?api_key=${API_KEY}&page=${page}`)
             .pipe(map(res => {
@@ -85,6 +86,7 @@ export class MovieService {
         return this.http.get<ResponseGenre>(`${API_URL}/genre/movie/list?api_key=${API_KEY}`);
     }
     getSearchMovie(search: string): Observable<Movie[]> {
+        console.log('STRAT getSearchMovie ');
         return this.http.get<ResponseMovie>
             (`${API_URL}/search/movie?api_key=${API_KEY}&query=${search}`)
             .pipe(map(res => {
